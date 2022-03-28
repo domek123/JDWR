@@ -1,1 +1,2 @@
 print("AAA")
+print("BBB")
