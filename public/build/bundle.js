@@ -8255,7 +8255,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(arrow.$$.fragment);
-    			attr_dev(div, "class", "sc-carousel__arrow-container svelte-5p05kc");
+    			attr_dev(div, "class", "sc-carousel__arrow-container left svelte-e3lu8m");
     			add_location(div, file$8, 247, 8, 6338);
     		},
     		m: function mount(target, anchor) {
@@ -8309,8 +8309,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(progress.$$.fragment);
-    			attr_dev(div, "class", "sc-carousel-progress__container svelte-5p05kc");
-    			add_location(div, file$8, 282, 8, 7459);
+    			attr_dev(div, "class", "sc-carousel-progress__container svelte-e3lu8m");
+    			add_location(div, file$8, 282, 8, 7464);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -8431,8 +8431,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(arrow.$$.fragment);
-    			attr_dev(div, "class", "sc-carousel__arrow-container svelte-5p05kc");
-    			add_location(div, file$8, 289, 8, 7681);
+    			attr_dev(div, "class", "sc-carousel__arrow-container right svelte-e3lu8m");
+    			add_location(div, file$8, 289, 8, 7686);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -8622,16 +8622,16 @@ var app = (function () {
     			if (if_block2) if_block2.c();
     			t3 = space();
     			if (if_block3) if_block3.c();
-    			attr_dev(div0, "class", "sc-carousel__pages-container svelte-5p05kc");
+    			attr_dev(div0, "class", "sc-carousel__pages-container svelte-e3lu8m");
     			set_style(div0, "transform", "translateX(" + /*offset*/ ctx[8] + "px)");
     			set_style(div0, "transition-duration", /*durationMs*/ ctx[9] + "ms");
     			set_style(div0, "transition-timing-function", /*timingFunction*/ ctx[0]);
-    			add_location(div0, file$8, 264, 6, 6791);
-    			attr_dev(div1, "class", "sc-carousel__pages-window svelte-5p05kc");
-    			add_location(div1, file$8, 256, 4, 6587);
-    			attr_dev(div2, "class", "sc-carousel__content-container svelte-5p05kc");
+    			add_location(div0, file$8, 264, 6, 6796);
+    			attr_dev(div1, "class", "sc-carousel__pages-window svelte-e3lu8m");
+    			add_location(div1, file$8, 256, 4, 6592);
+    			attr_dev(div2, "class", "sc-carousel__content-container svelte-e3lu8m");
     			add_location(div2, file$8, 244, 2, 6204);
-    			attr_dev(div3, "class", "sc-carousel__carousel-container svelte-5p05kc");
+    			attr_dev(div3, "class", "sc-carousel__carousel-container svelte-e3lu8m");
     			add_location(div3, file$8, 243, 0, 6155);
     		},
     		l: function claim(nodes) {
@@ -9430,28 +9430,29 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[1] = list[i];
+    	child_ctx[2] = list[i];
     	return child_ctx;
     }
 
-    // (7:2) {#each colors as color}
+    // (8:2) {#each colors as color}
     function create_each_block$1(ctx) {
-    	let div;
+    	let img;
+    	let img_src_value;
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			set_style(div, "width", "100%");
-    			set_style(div, "height", "200px");
-    			set_style(div, "background-color", /*color*/ ctx[1]);
-    			add_location(div, file$7, 7, 4, 214);
+    			img = element("img");
+    			if (!src_url_equal(img.src, img_src_value = /*color*/ ctx[2])) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", /*color*/ ctx[2]);
+    			attr_dev(img, "class", "slider-img svelte-yxnljh");
+    			add_location(img, file$7, 9, 4, 317);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
+    			insert_dev(target, img, anchor);
     		},
     		p: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(img);
     		}
     	};
 
@@ -9459,17 +9460,17 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(7:2) {#each colors as color}",
+    		source: "(8:2) {#each colors as color}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (6:0) <Carousel autoplay autoplayDuration={5000} autoplayProgressVisible pauseOnFocus>
+    // (7:0) <Carousel autoplay autoplayDuration={speed} pauseOnFocus>
     function create_default_slot(ctx) {
     	let each_1_anchor;
-    	let each_value = /*colors*/ ctx[0];
+    	let each_value = /*colors*/ ctx[1];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -9493,8 +9494,8 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*colors*/ 1) {
-    				each_value = /*colors*/ ctx[0];
+    			if (dirty & /*colors*/ 2) {
+    				each_value = /*colors*/ ctx[1];
     				validate_each_argument(each_value);
     				let i;
 
@@ -9527,7 +9528,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(6:0) <Carousel autoplay autoplayDuration={5000} autoplayProgressVisible pauseOnFocus>",
+    		source: "(7:0) <Carousel autoplay autoplayDuration={speed} pauseOnFocus>",
     		ctx
     	});
 
@@ -9541,8 +9542,7 @@ var app = (function () {
     	carousel = new Carousel({
     			props: {
     				autoplay: true,
-    				autoplayDuration: 5000,
-    				autoplayProgressVisible: true,
+    				autoplayDuration: /*speed*/ ctx[0],
     				pauseOnFocus: true,
     				$$slots: { default: [create_default_slot] },
     				$$scope: { ctx }
@@ -9563,8 +9563,9 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			const carousel_changes = {};
+    			if (dirty & /*speed*/ 1) carousel_changes.autoplayDuration = /*speed*/ ctx[0];
 
-    			if (dirty & /*$$scope*/ 16) {
+    			if (dirty & /*$$scope*/ 32) {
     				carousel_changes.$$scope = { dirty, ctx };
     			}
 
@@ -9598,30 +9599,36 @@ var app = (function () {
     function instance$7($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Slider', slots, []);
-    	let colors = ["green", "blue"];
-    	const writable_props = [];
+    	let colors = ["./img/a.jpg", "./img/galaxy.jpg"];
+    	let { speed = 5000 } = $$props;
+    	const writable_props = ['speed'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Slider> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ Carousel, colors });
+    	$$self.$$set = $$props => {
+    		if ('speed' in $$props) $$invalidate(0, speed = $$props.speed);
+    	};
+
+    	$$self.$capture_state = () => ({ Carousel, colors, speed });
 
     	$$self.$inject_state = $$props => {
-    		if ('colors' in $$props) $$invalidate(0, colors = $$props.colors);
+    		if ('colors' in $$props) $$invalidate(1, colors = $$props.colors);
+    		if ('speed' in $$props) $$invalidate(0, speed = $$props.speed);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [colors];
+    	return [speed, colors];
     }
 
     class Slider extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$7, create_fragment$7, safe_not_equal, {});
+    		init(this, options, instance$7, create_fragment$7, safe_not_equal, { speed: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -9629,6 +9636,14 @@ var app = (function () {
     			options,
     			id: create_fragment$7.name
     		});
+    	}
+
+    	get speed() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set speed(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -9953,7 +9968,7 @@ var app = (function () {
     			h20.textContent = "ADDRESS";
     			t2 = space();
     			p0 = element("p");
-    			p0.textContent = "Photo booth tattooed prism, portland taiyaki hoodie neutra\r\n            typewriter";
+    			p0.textContent = "Photo booth tattooed prism, portland taiyaki hoodie neutra\n            typewriter";
     			t4 = space();
     			div1 = element("div");
     			h21 = element("h2");
@@ -9997,7 +10012,7 @@ var app = (function () {
     			button.textContent = "Button";
     			t27 = space();
     			p3 = element("p");
-    			p3.textContent = "Chicharrones blog helvetica normcore iceland tousled brook viral\r\n        artisan.";
+    			p3.textContent = "Chicharrones blog helvetica normcore iceland tousled brook viral\n        artisan.";
     			attr_dev(iframe, "class", "absolute inset-0");
     			set_style(iframe, "filter", "grayscale(1) contrast(1.2) opacity(0.4)");
     			attr_dev(iframe, "title", "map");
@@ -10008,68 +10023,68 @@ var app = (function () {
     			attr_dev(iframe, "width", "100%");
     			attr_dev(iframe, "height", "100%");
     			attr_dev(iframe, "frameborder", "0");
-    			add_location(iframe, file$5, 5, 6, 275);
+    			add_location(iframe, file$5, 5, 6, 270);
     			attr_dev(h20, "class", "title-font font-semibold text-gray-900 tracking-widest text-xs");
-    			add_location(h20, file$5, 19, 10, 829);
+    			add_location(h20, file$5, 19, 10, 810);
     			attr_dev(p0, "class", "mt-1");
-    			add_location(p0, file$5, 24, 10, 979);
+    			add_location(p0, file$5, 24, 10, 955);
     			attr_dev(div0, "class", "lg:w-1/2 px-6");
-    			add_location(div0, file$5, 18, 8, 790);
+    			add_location(div0, file$5, 18, 8, 772);
     			attr_dev(h21, "class", "title-font font-semibold text-gray-900 tracking-widest text-xs");
-    			add_location(h21, file$5, 30, 10, 1185);
+    			add_location(h21, file$5, 30, 10, 1155);
     			attr_dev(a, "class", "text-indigo-500 leading-relaxed");
-    			add_location(a, file$5, 35, 10, 1333);
+    			add_location(a, file$5, 35, 10, 1298);
     			attr_dev(h22, "class", "title-font font-semibold text-gray-900 tracking-widest text-xs mt-4");
-    			add_location(h22, file$5, 36, 10, 1409);
+    			add_location(h22, file$5, 36, 10, 1373);
     			attr_dev(p1, "class", "leading-relaxed");
-    			add_location(p1, file$5, 41, 10, 1562);
+    			add_location(p1, file$5, 41, 10, 1521);
     			attr_dev(div1, "class", "lg:w-1/2 px-6 mt-4 lg:mt-0");
-    			add_location(div1, file$5, 29, 8, 1133);
+    			add_location(div1, file$5, 29, 8, 1104);
     			attr_dev(div2, "class", "bg-white relative flex flex-wrap py-6 rounded shadow-md");
-    			add_location(div2, file$5, 17, 6, 711);
+    			add_location(div2, file$5, 17, 6, 694);
     			attr_dev(div3, "class", "lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative");
-    			add_location(div3, file$5, 2, 4, 132);
+    			add_location(div3, file$5, 2, 4, 130);
     			attr_dev(h23, "class", "text-gray-900 text-lg mb-1 font-medium title-font");
-    			add_location(h23, file$5, 48, 6, 1767);
+    			add_location(h23, file$5, 48, 6, 1719);
     			attr_dev(p2, "class", "leading-relaxed mb-5 text-gray-600");
-    			add_location(p2, file$5, 51, 6, 1868);
+    			add_location(p2, file$5, 51, 6, 1817);
     			attr_dev(label0, "for", "name");
     			attr_dev(label0, "class", "leading-7 text-sm text-gray-600");
-    			add_location(label0, file$5, 55, 8, 2042);
+    			add_location(label0, file$5, 55, 8, 1987);
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "id", "name");
     			attr_dev(input0, "name", "name");
     			attr_dev(input0, "class", "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out");
-    			add_location(input0, file$5, 56, 8, 2122);
+    			add_location(input0, file$5, 56, 8, 2066);
     			attr_dev(div4, "class", "relative mb-4");
-    			add_location(div4, file$5, 54, 6, 2005);
+    			add_location(div4, file$5, 54, 6, 1951);
     			attr_dev(label1, "for", "email");
     			attr_dev(label1, "class", "leading-7 text-sm text-gray-600");
-    			add_location(label1, file$5, 64, 8, 2491);
+    			add_location(label1, file$5, 64, 8, 2427);
     			attr_dev(input1, "type", "email");
     			attr_dev(input1, "id", "email");
     			attr_dev(input1, "name", "email");
     			attr_dev(input1, "class", "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out");
-    			add_location(input1, file$5, 65, 8, 2573);
+    			add_location(input1, file$5, 65, 8, 2508);
     			attr_dev(div5, "class", "relative mb-4");
-    			add_location(div5, file$5, 63, 6, 2454);
+    			add_location(div5, file$5, 63, 6, 2391);
     			attr_dev(label2, "for", "message");
     			attr_dev(label2, "class", "leading-7 text-sm text-gray-600");
-    			add_location(label2, file$5, 73, 8, 2945);
+    			add_location(label2, file$5, 73, 8, 2872);
     			attr_dev(textarea, "id", "message");
     			attr_dev(textarea, "name", "message");
     			attr_dev(textarea, "class", "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out");
-    			add_location(textarea, file$5, 76, 8, 3053);
+    			add_location(textarea, file$5, 76, 8, 2977);
     			attr_dev(div6, "class", "relative mb-4");
-    			add_location(div6, file$5, 72, 6, 2908);
+    			add_location(div6, file$5, 72, 6, 2836);
     			attr_dev(button, "class", "text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg");
-    			add_location(button, file$5, 82, 6, 3388);
+    			add_location(button, file$5, 82, 6, 3306);
     			attr_dev(p3, "class", "text-xs text-gray-500 mt-3");
-    			add_location(p3, file$5, 86, 6, 3553);
+    			add_location(p3, file$5, 86, 6, 3467);
     			attr_dev(div7, "class", "lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0");
-    			add_location(div7, file$5, 45, 4, 1653);
+    			add_location(div7, file$5, 45, 4, 1608);
     			attr_dev(div8, "class", "container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap");
-    			add_location(div8, file$5, 1, 2, 54);
+    			add_location(div8, file$5, 1, 2, 53);
     			attr_dev(section, "class", "text-gray-600 body-font relative");
     			add_location(section, file$5, 0, 0, 0);
     		},
@@ -10198,12 +10213,12 @@ var app = (function () {
     			attr_dev(img, "class", "lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6");
     			if (!src_url_equal(img.src, img_src_value = /*info*/ ctx[0].url)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Image Size 720x400");
-    			add_location(img, file$4, 6, 8, 158);
-    			attr_dev(h2, "class", "text-lg text-gray-900 font-medium title-font mb-4");
-    			add_location(h2, file$4, 11, 8, 364);
+    			add_location(img, file$4, 8, 8, 191);
+    			attr_dev(h2, "class", "text-lg text-white font-medium title-font mb-4 underline");
+    			add_location(h2, file$4, 13, 8, 397);
     			attr_dev(p, "class", "leading-relaxed text-base");
-    			add_location(p, file$4, 14, 8, 477);
-    			attr_dev(div0, "class", "bg-white p-6 rounded-lg border-gray-100 border-2");
+    			add_location(p, file$4, 16, 8, 517);
+    			attr_dev(div0, "class", "gray text-white p-6 rounded-lg border-gray-100 border-2 opacity-70 svelte-1chjga2");
     			add_location(div0, file$4, 5, 4, 86);
     			attr_dev(div1, "class", "xl:w-1/3 md:w-1/2 p-4");
     			add_location(div1, file$4, 4, 0, 45);
@@ -10359,13 +10374,26 @@ var app = (function () {
 
     function create_fragment$3(ctx) {
     	let section0;
-    	let h10;
+    	let h1;
     	let t1;
     	let div0;
     	let t2;
-    	let section1;
     	let div1;
-    	let h11;
+    	let t3;
+    	let section1;
+    	let article0;
+    	let div2;
+    	let t5;
+    	let div3;
+    	let img0;
+    	let img0_src_value;
+    	let t6;
+    	let article1;
+    	let div4;
+    	let img1;
+    	let img1_src_value;
+    	let t7;
+    	let div5;
     	let current;
     	let each_value = /*newsArray*/ ctx[0];
     	validate_each_argument(each_value);
@@ -10382,8 +10410,8 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			section0 = element("section");
-    			h10 = element("h1");
-    			h10.textContent = "News";
+    			h1 = element("h1");
+    			h1.textContent = "News";
     			t1 = space();
     			div0 = element("div");
 
@@ -10392,27 +10420,59 @@ var app = (function () {
     			}
 
     			t2 = space();
-    			section1 = element("section");
     			div1 = element("div");
-    			h11 = element("h1");
-    			h11.textContent = "main section";
-    			attr_dev(h10, "class", "news-head svelte-1dsewr2");
-    			add_location(h10, file$3, 22, 2, 963);
-    			attr_dev(div0, "class", "news-content svelte-1dsewr2");
-    			add_location(div0, file$3, 23, 2, 998);
+    			t3 = space();
+    			section1 = element("section");
+    			article0 = element("article");
+    			div2 = element("div");
+    			div2.textContent = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\r\n      Lorem Ipsum has been the industry's standard dummy text ever since the\r\n      1500s, when an unknown printer took a galley of type and scrambled it to\r\n      make a type specimen book. It has survived not only five centuries, but\r\n      also the leap into electronic typesetting, remaining essentially\r\n      unchanged. It was popularised in the 1960s with the release of Letraset\r\n      sheets containing Lorem Ipsum passages, and more recently with desktop\r\n      publishing software like Aldus PageMaker including versions of Lorem\r\n      Ipsum.";
+    			t5 = space();
+    			div3 = element("div");
+    			img0 = element("img");
+    			t6 = space();
+    			article1 = element("article");
+    			div4 = element("div");
+    			img1 = element("img");
+    			t7 = space();
+    			div5 = element("div");
+    			div5.textContent = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\r\n      Lorem Ipsum has been the industry's standard dummy text ever since the\r\n      1500s, when an unknown printer took a galley of type and scrambled it to\r\n      make a type specimen book. It has survived not only five centuries, but\r\n      also the leap into electronic typesetting, remaining essentially\r\n      unchanged. It was popularised in the 1960s with the release of Letraset\r\n      sheets containing Lorem Ipsum passages, and more recently with desktop\r\n      publishing software like Aldus PageMaker including versions of Lorem\r\n      Ipsum.";
+    			attr_dev(h1, "class", "news-head text-white svelte-2n78hp");
+    			add_location(h1, file$3, 22, 2, 963);
+    			attr_dev(div0, "class", "news-content svelte-2n78hp");
+    			add_location(div0, file$3, 23, 2, 1009);
     			attr_dev(section0, "class", "news");
     			add_location(section0, file$3, 21, 0, 937);
-    			add_location(h11, file$3, 31, 4, 1165);
-    			add_location(div1, file$3, 30, 2, 1154);
+    			attr_dev(div1, "class", "white-line svelte-2n78hp");
+    			add_location(div1, file$3, 29, 0, 1131);
+    			attr_dev(div2, "class", "text-white p-6 main-info svelte-2n78hp");
+    			add_location(div2, file$3, 32, 4, 1229);
+    			if (!src_url_equal(img0.src, img0_src_value = "./img/galaxy.jpg")) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "alt", "galaxy image");
+    			attr_dev(img0, "class", "main-img svelte-2n78hp");
+    			add_location(img0, file$3, 44, 6, 1960);
+    			attr_dev(div3, "class", "p-6 main-image svelte-2n78hp");
+    			add_location(div3, file$3, 43, 4, 1923);
+    			attr_dev(article0, "class", "main-article svelte-2n78hp");
+    			add_location(article0, file$3, 31, 2, 1193);
+    			if (!src_url_equal(img1.src, img1_src_value = "./img/galaxy.jpg")) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "alt", "galaxy image");
+    			attr_dev(img1, "class", "main-img svelte-2n78hp");
+    			add_location(img1, file$3, 50, 6, 2131);
+    			attr_dev(div4, "class", "p-6 main-image svelte-2n78hp");
+    			add_location(div4, file$3, 49, 4, 2094);
+    			attr_dev(div5, "class", "text-white p-6 main-info svelte-2n78hp");
+    			add_location(div5, file$3, 52, 4, 2215);
+    			attr_dev(article1, "class", "main-article svelte-2n78hp");
+    			add_location(article1, file$3, 48, 2, 2058);
     			attr_dev(section1, "class", "main-section");
-    			add_location(section1, file$3, 29, 0, 1120);
+    			add_location(section1, file$3, 30, 0, 1159);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section0, anchor);
-    			append_dev(section0, h10);
+    			append_dev(section0, h1);
     			append_dev(section0, t1);
     			append_dev(section0, div0);
 
@@ -10421,9 +10481,20 @@ var app = (function () {
     			}
 
     			insert_dev(target, t2, anchor);
+    			insert_dev(target, div1, anchor);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, section1, anchor);
-    			append_dev(section1, div1);
-    			append_dev(div1, h11);
+    			append_dev(section1, article0);
+    			append_dev(article0, div2);
+    			append_dev(article0, t5);
+    			append_dev(article0, div3);
+    			append_dev(div3, img0);
+    			append_dev(section1, t6);
+    			append_dev(section1, article1);
+    			append_dev(article1, div4);
+    			append_dev(div4, img1);
+    			append_dev(article1, t7);
+    			append_dev(article1, div5);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
@@ -10477,6 +10548,8 @@ var app = (function () {
     			if (detaching) detach_dev(section0);
     			destroy_each(each_blocks, detaching);
     			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(section1);
     		}
     	};
@@ -10641,7 +10714,7 @@ var app = (function () {
     			h10.textContent = "Master Cleanse Reliac Heirloom";
     			t1 = space();
     			p0 = element("p");
-    			p0.textContent = "Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical\r\n        gentrify, subway tile poke farm-to-table. Franzen you probably haven't\r\n        heard of them man bun deep jianbing selfies heirloom.";
+    			p0.textContent = "Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical\n        gentrify, subway tile poke farm-to-table. Franzen you probably haven't\n        heard of them man bun deep jianbing selfies heirloom.";
     			t3 = space();
     			div19 = element("div");
     			div3 = element("div");
@@ -10656,7 +10729,7 @@ var app = (function () {
     			h11.textContent = "Shooting Stars";
     			t8 = space();
     			p1 = element("p");
-    			p1.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\r\n              microdosing tousled waistcoat.";
+    			p1.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\n              microdosing tousled waistcoat.";
     			t10 = space();
     			div6 = element("div");
     			div5 = element("div");
@@ -10670,7 +10743,7 @@ var app = (function () {
     			h12.textContent = "The Catalyzer";
     			t15 = space();
     			p2 = element("p");
-    			p2.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\r\n              microdosing tousled waistcoat.";
+    			p2.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\n              microdosing tousled waistcoat.";
     			t17 = space();
     			div9 = element("div");
     			div8 = element("div");
@@ -10684,7 +10757,7 @@ var app = (function () {
     			h13.textContent = "The 400 Blows";
     			t22 = space();
     			p3 = element("p");
-    			p3.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\r\n              microdosing tousled waistcoat.";
+    			p3.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\n              microdosing tousled waistcoat.";
     			t24 = space();
     			div12 = element("div");
     			div11 = element("div");
@@ -10698,7 +10771,7 @@ var app = (function () {
     			h14.textContent = "Neptune";
     			t29 = space();
     			p4 = element("p");
-    			p4.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\r\n              microdosing tousled waistcoat.";
+    			p4.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\n              microdosing tousled waistcoat.";
     			t31 = space();
     			div15 = element("div");
     			div14 = element("div");
@@ -10712,7 +10785,7 @@ var app = (function () {
     			h15.textContent = "Holden Caulfield";
     			t36 = space();
     			p5 = element("p");
-    			p5.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\r\n              microdosing tousled waistcoat.";
+    			p5.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\n              microdosing tousled waistcoat.";
     			t38 = space();
     			div18 = element("div");
     			div17 = element("div");
@@ -10726,113 +10799,113 @@ var app = (function () {
     			h16.textContent = "Alper Kamu";
     			t43 = space();
     			p6 = element("p");
-    			p6.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\r\n              microdosing tousled waistcoat.";
+    			p6.textContent = "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing\n              microdosing tousled waistcoat.";
     			attr_dev(h10, "class", "sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900");
-    			add_location(h10, file$2, 3, 6, 153);
+    			add_location(h10, file$2, 3, 6, 150);
     			attr_dev(p0, "class", "lg:w-2/3 mx-auto leading-relaxed text-base");
-    			add_location(p0, file$2, 8, 6, 306);
+    			add_location(p0, file$2, 8, 6, 298);
     			attr_dev(div0, "class", "flex flex-col text-center w-full mb-20");
-    			add_location(div0, file$2, 2, 4, 93);
+    			add_location(div0, file$2, 2, 4, 91);
     			attr_dev(img0, "alt", "gallery");
     			attr_dev(img0, "class", "absolute inset-0 w-full h-full object-cover object-center");
     			if (!src_url_equal(img0.src, img0_src_value = "https://dummyimage.com/600x360")) attr_dev(img0, "src", img0_src_value);
-    			add_location(img0, file$2, 17, 10, 731);
+    			add_location(img0, file$2, 17, 10, 714);
     			attr_dev(h20, "class", "tracking-widest text-sm title-font font-medium text-indigo-500 mb-1");
-    			add_location(h20, file$2, 25, 12, 1063);
+    			add_location(h20, file$2, 25, 12, 1038);
     			attr_dev(h11, "class", "title-font text-lg font-medium text-gray-900 mb-3");
-    			add_location(h11, file$2, 30, 12, 1233);
+    			add_location(h11, file$2, 30, 12, 1203);
     			attr_dev(p1, "class", "leading-relaxed");
-    			add_location(p1, file$2, 33, 12, 1358);
+    			add_location(p1, file$2, 33, 12, 1325);
     			attr_dev(div1, "class", "px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100");
-    			add_location(div1, file$2, 22, 10, 917);
+    			add_location(div1, file$2, 22, 10, 895);
     			attr_dev(div2, "class", "flex relative");
-    			add_location(div2, file$2, 16, 8, 692);
+    			add_location(div2, file$2, 16, 8, 676);
     			attr_dev(div3, "class", "lg:w-1/3 sm:w-1/2 p-4");
-    			add_location(div3, file$2, 15, 6, 647);
+    			add_location(div3, file$2, 15, 6, 632);
     			attr_dev(img1, "alt", "gallery");
     			attr_dev(img1, "class", "absolute inset-0 w-full h-full object-cover object-center");
     			if (!src_url_equal(img1.src, img1_src_value = "https://dummyimage.com/601x361")) attr_dev(img1, "src", img1_src_value);
-    			add_location(img1, file$2, 42, 10, 1668);
+    			add_location(img1, file$2, 42, 10, 1626);
     			attr_dev(h21, "class", "tracking-widest text-sm title-font font-medium text-indigo-500 mb-1");
-    			add_location(h21, file$2, 50, 12, 2000);
+    			add_location(h21, file$2, 50, 12, 1950);
     			attr_dev(h12, "class", "title-font text-lg font-medium text-gray-900 mb-3");
-    			add_location(h12, file$2, 55, 12, 2170);
+    			add_location(h12, file$2, 55, 12, 2115);
     			attr_dev(p2, "class", "leading-relaxed");
-    			add_location(p2, file$2, 58, 12, 2294);
+    			add_location(p2, file$2, 58, 12, 2236);
     			attr_dev(div4, "class", "px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100");
-    			add_location(div4, file$2, 47, 10, 1854);
+    			add_location(div4, file$2, 47, 10, 1807);
     			attr_dev(div5, "class", "flex relative");
-    			add_location(div5, file$2, 41, 8, 1629);
+    			add_location(div5, file$2, 41, 8, 1588);
     			attr_dev(div6, "class", "lg:w-1/3 sm:w-1/2 p-4");
-    			add_location(div6, file$2, 40, 6, 1584);
+    			add_location(div6, file$2, 40, 6, 1544);
     			attr_dev(img2, "alt", "gallery");
     			attr_dev(img2, "class", "absolute inset-0 w-full h-full object-cover object-center");
     			if (!src_url_equal(img2.src, img2_src_value = "https://dummyimage.com/603x363")) attr_dev(img2, "src", img2_src_value);
-    			add_location(img2, file$2, 67, 10, 2604);
+    			add_location(img2, file$2, 67, 10, 2537);
     			attr_dev(h22, "class", "tracking-widest text-sm title-font font-medium text-indigo-500 mb-1");
-    			add_location(h22, file$2, 75, 12, 2936);
+    			add_location(h22, file$2, 75, 12, 2861);
     			attr_dev(h13, "class", "title-font text-lg font-medium text-gray-900 mb-3");
-    			add_location(h13, file$2, 80, 12, 3106);
+    			add_location(h13, file$2, 80, 12, 3026);
     			attr_dev(p3, "class", "leading-relaxed");
-    			add_location(p3, file$2, 83, 12, 3230);
+    			add_location(p3, file$2, 83, 12, 3147);
     			attr_dev(div7, "class", "px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100");
-    			add_location(div7, file$2, 72, 10, 2790);
+    			add_location(div7, file$2, 72, 10, 2718);
     			attr_dev(div8, "class", "flex relative");
-    			add_location(div8, file$2, 66, 8, 2565);
+    			add_location(div8, file$2, 66, 8, 2499);
     			attr_dev(div9, "class", "lg:w-1/3 sm:w-1/2 p-4");
-    			add_location(div9, file$2, 65, 6, 2520);
+    			add_location(div9, file$2, 65, 6, 2455);
     			attr_dev(img3, "alt", "gallery");
     			attr_dev(img3, "class", "absolute inset-0 w-full h-full object-cover object-center");
     			if (!src_url_equal(img3.src, img3_src_value = "https://dummyimage.com/602x362")) attr_dev(img3, "src", img3_src_value);
-    			add_location(img3, file$2, 92, 10, 3540);
+    			add_location(img3, file$2, 92, 10, 3448);
     			attr_dev(h23, "class", "tracking-widest text-sm title-font font-medium text-indigo-500 mb-1");
-    			add_location(h23, file$2, 100, 12, 3872);
+    			add_location(h23, file$2, 100, 12, 3772);
     			attr_dev(h14, "class", "title-font text-lg font-medium text-gray-900 mb-3");
-    			add_location(h14, file$2, 105, 12, 4042);
+    			add_location(h14, file$2, 105, 12, 3937);
     			attr_dev(p4, "class", "leading-relaxed");
-    			add_location(p4, file$2, 108, 12, 4160);
+    			add_location(p4, file$2, 108, 12, 4052);
     			attr_dev(div10, "class", "px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100");
-    			add_location(div10, file$2, 97, 10, 3726);
+    			add_location(div10, file$2, 97, 10, 3629);
     			attr_dev(div11, "class", "flex relative");
-    			add_location(div11, file$2, 91, 8, 3501);
+    			add_location(div11, file$2, 91, 8, 3410);
     			attr_dev(div12, "class", "lg:w-1/3 sm:w-1/2 p-4");
-    			add_location(div12, file$2, 90, 6, 3456);
+    			add_location(div12, file$2, 90, 6, 3366);
     			attr_dev(img4, "alt", "gallery");
     			attr_dev(img4, "class", "absolute inset-0 w-full h-full object-cover object-center");
     			if (!src_url_equal(img4.src, img4_src_value = "https://dummyimage.com/605x365")) attr_dev(img4, "src", img4_src_value);
-    			add_location(img4, file$2, 117, 10, 4470);
+    			add_location(img4, file$2, 117, 10, 4353);
     			attr_dev(h24, "class", "tracking-widest text-sm title-font font-medium text-indigo-500 mb-1");
-    			add_location(h24, file$2, 125, 12, 4802);
+    			add_location(h24, file$2, 125, 12, 4677);
     			attr_dev(h15, "class", "title-font text-lg font-medium text-gray-900 mb-3");
-    			add_location(h15, file$2, 130, 12, 4972);
+    			add_location(h15, file$2, 130, 12, 4842);
     			attr_dev(p5, "class", "leading-relaxed");
-    			add_location(p5, file$2, 133, 12, 5099);
+    			add_location(p5, file$2, 133, 12, 4966);
     			attr_dev(div13, "class", "px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100");
-    			add_location(div13, file$2, 122, 10, 4656);
+    			add_location(div13, file$2, 122, 10, 4534);
     			attr_dev(div14, "class", "flex relative");
-    			add_location(div14, file$2, 116, 8, 4431);
+    			add_location(div14, file$2, 116, 8, 4315);
     			attr_dev(div15, "class", "lg:w-1/3 sm:w-1/2 p-4");
-    			add_location(div15, file$2, 115, 6, 4386);
+    			add_location(div15, file$2, 115, 6, 4271);
     			attr_dev(img5, "alt", "gallery");
     			attr_dev(img5, "class", "absolute inset-0 w-full h-full object-cover object-center");
     			if (!src_url_equal(img5.src, img5_src_value = "https://dummyimage.com/606x366")) attr_dev(img5, "src", img5_src_value);
-    			add_location(img5, file$2, 142, 10, 5409);
+    			add_location(img5, file$2, 142, 10, 5267);
     			attr_dev(h25, "class", "tracking-widest text-sm title-font font-medium text-indigo-500 mb-1");
-    			add_location(h25, file$2, 150, 12, 5741);
+    			add_location(h25, file$2, 150, 12, 5591);
     			attr_dev(h16, "class", "title-font text-lg font-medium text-gray-900 mb-3");
-    			add_location(h16, file$2, 155, 12, 5911);
+    			add_location(h16, file$2, 155, 12, 5756);
     			attr_dev(p6, "class", "leading-relaxed");
-    			add_location(p6, file$2, 158, 12, 6032);
+    			add_location(p6, file$2, 158, 12, 5874);
     			attr_dev(div16, "class", "px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100");
-    			add_location(div16, file$2, 147, 10, 5595);
+    			add_location(div16, file$2, 147, 10, 5448);
     			attr_dev(div17, "class", "flex relative");
-    			add_location(div17, file$2, 141, 8, 5370);
+    			add_location(div17, file$2, 141, 8, 5229);
     			attr_dev(div18, "class", "lg:w-1/3 sm:w-1/2 p-4");
-    			add_location(div18, file$2, 140, 6, 5325);
+    			add_location(div18, file$2, 140, 6, 5185);
     			attr_dev(div19, "class", "flex flex-wrap -m-4");
-    			add_location(div19, file$2, 14, 4, 606);
+    			add_location(div19, file$2, 14, 4, 592);
     			attr_dev(div20, "class", "container px-5 py-24 mx-auto");
-    			add_location(div20, file$2, 1, 2, 45);
+    			add_location(div20, file$2, 1, 2, 44);
     			attr_dev(section, "class", "text-gray-600 body-font");
     			add_location(section, file$2, 0, 0, 0);
     		},
@@ -11037,7 +11110,6 @@ var app = (function () {
     	let t1;
     	let slider;
     	let t2;
-    	let main;
     	let div0;
     	let router;
     	let t3;
@@ -11071,17 +11143,15 @@ var app = (function () {
     			t1 = space();
     			create_component(slider.$$.fragment);
     			t2 = space();
-    			main = element("main");
     			div0 = element("div");
     			create_component(router.$$.fragment);
     			t3 = space();
     			create_component(footer.$$.fragment);
-    			add_location(header1, file, 16, 2, 534);
-    			attr_dev(div0, "class", "main-container svelte-14w96h3");
-    			add_location(div0, file, 22, 4, 605);
-    			add_location(main, file, 21, 2, 593);
-    			attr_dev(div1, "class", "flex flex-col min-h-screen");
-    			add_location(div1, file, 15, 0, 490);
+    			add_location(header1, file, 15, 2, 504);
+    			attr_dev(div0, "class", "main-container svelte-130p94u");
+    			add_location(div0, file, 20, 2, 558);
+    			attr_dev(div1, "class", "flex flex-col");
+    			add_location(div1, file, 14, 0, 474);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11095,8 +11165,7 @@ var app = (function () {
     			append_dev(header1, t1);
     			mount_component(slider, header1, null);
     			append_dev(div1, t2);
-    			append_dev(div1, main);
-    			append_dev(main, div0);
+    			append_dev(div1, div0);
     			mount_component(router, div0, null);
     			append_dev(div1, t3);
     			mount_component(footer, div1, null);

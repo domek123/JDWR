@@ -12,32 +12,28 @@
 </script>
 
 <Tailwindcss />
-
-<div class="flex flex-col min-h-screen">
+<div class="flex flex-col">
   <header>
     <Header />
     <Slider />
   </header>
 
-  <main>
-    <div class="main-container">
-      <Router
-        routes={{
-          "/": Home,
-          "/contact": Contact,
-          "/gallery": Gallery,
-          "*": NotFound,
-        }}
-      />
-    </div>
-  </main>
+  <div class="main-container">
+    <Router
+      routes={{
+        "/": Home,
+        "/contact": Contact,
+        "/gallery": Gallery,
+        "*": NotFound,
+      }}
+    />
+  </div>
   <Footer />
 </div>
 
 <style>
   .main-container {
     text-align: center;
-    padding: 1em;
     margin: 0 auto;
     max-width: 1200px;
   }
