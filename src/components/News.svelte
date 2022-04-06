@@ -1,5 +1,10 @@
 <script>
     export let info;
+    const handleTest = () => {
+        const body = JSON.stringify({a: "123455"})
+         const headers = { "Content-Type": "application/json" };
+        fetch("http://localhost:3421/Register",{method: 'post', body, headers}).then(response => response.json()).then(data => console.log(data))
+    }
 </script>
 
 <div class="xl:w-1/3 md:w-1/2 p-4">
@@ -17,6 +22,7 @@
         <p class="leading-relaxed text-base">
             {info.text}
         </p>
+        <button id="check" on:click={handleTest}>sprawdz</button>
     </div>
 </div>
 
