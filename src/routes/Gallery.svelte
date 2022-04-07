@@ -1,168 +1,52 @@
-<section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
+<script>
+  import Photo from "../components/gallery/Photo.svelte";
+  let tab = [
+    {
+      src: "./img/Merkury.jpg",
+      title: "Merkury",
+      text: "Planeta porusza się tak szybko, że w ciągu zaledwie 88 dni tworzy kompletną pętlę wokół Słońca. Merkury to mały, skalisty świat. Jest on tylko tak szeroki, jak Ocean Atlantycki.  ",
+    },
+    {
+      src: "./img/venus.jpg",
+      title: "Wenus",
+      text: "Uważa się, że miliardy lat temu Wenus mogła mieć podobny klimat jak ten na Ziemi. Naukowcy uważają, że mogły istnieć duże ilości wody, nawet wystarczająco duże, aby stworzyć oceany na Wenus. Jednak wysokie temperatury na Wenus, które wywołują ekstremalny efekt cieplarniany, pozwoliły na odparowanie wody.",
+    },
+    {
+      src: "./img/ziemia.jpg",
+      title: "Ziemia",
+      text: "Wokół Ziemi krąży naturalny satelita Księżyc. Możemy go ujrzeć po zmroku. Gdyby nagle zniknął nocą księżyc, byłoby tak ciemno, że nie moglibyśmy się kompletnie poruszać, niestety gwiazdy nie byłyby w stanie oświetlić naszej planety.",
+    },
+    {
+      src: "./img/mars.jpeg",
+      title: "Mars",
+      text: "Najwyższy szczyt na Marsie to wulkan o nazwie Góra Olimp. Ma 25 km wysokości i jest to prawdopodobnie również najwyższe wzniesienie w całym Układzie Słonecznym.",
+    },
+    {
+      src: "./img/jowisz.jpg",
+      title: "Jowisz",
+      text: "Jowisz jest czwartym najjaśniejszym obiektem w Układzie Słonecznym widzianym z Ziemi. Tylko Słońce, Księżyc i Wenus są jaśniejsze. Jowisz ma najwięcej księżyców w układzie słonecznym na 67 potwierdzonych. Galileo znalazł pierwsze cztery w 1610 roku.",
+    },
+    {
+      src: "./img/saturn.jpg",
+      title: "Saturn",
+      text: "Pierścienie Saturna są zrobione z kawałków skał i lodu. Saturn jest najlżejszą planetą w naszym układzie słonecznym.",
+    },
+  ];
+</script>
+
+<section class="mt-10">
+  <div class="container mx-auto">
     <div class="flex flex-col text-center w-full mb-20">
       <h1
-        class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+        class="sm:text-6xl font-medium title-font mb-1 text-white border-white border-b-2 pb-5"
       >
-        Master Cleanse Reliac Heirloom
+        Galeria
       </h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-        Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-        gentrify, subway tile poke farm-to-table. Franzen you probably haven't
-        heard of them man bun deep jianbing selfies heirloom.
-      </p>
     </div>
     <div class="flex flex-wrap -m-4">
-      <div class="lg:w-1/3 sm:w-1/2 p-4">
-        <div class="flex relative">
-          <img
-            alt="gallery"
-            class="absolute inset-0 w-full h-full object-cover object-center"
-            src="https://dummyimage.com/600x360"
-          />
-          <div
-            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-          >
-            <h2
-              class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-            >
-              THE SUBTITLE
-            </h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-              Shooting Stars
-            </h1>
-            <p class="leading-relaxed">
-              Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-              microdosing tousled waistcoat.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="lg:w-1/3 sm:w-1/2 p-4">
-        <div class="flex relative">
-          <img
-            alt="gallery"
-            class="absolute inset-0 w-full h-full object-cover object-center"
-            src="https://dummyimage.com/601x361"
-          />
-          <div
-            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-          >
-            <h2
-              class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-            >
-              THE SUBTITLE
-            </h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-              The Catalyzer
-            </h1>
-            <p class="leading-relaxed">
-              Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-              microdosing tousled waistcoat.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="lg:w-1/3 sm:w-1/2 p-4">
-        <div class="flex relative">
-          <img
-            alt="gallery"
-            class="absolute inset-0 w-full h-full object-cover object-center"
-            src="https://dummyimage.com/603x363"
-          />
-          <div
-            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-          >
-            <h2
-              class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-            >
-              THE SUBTITLE
-            </h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-              The 400 Blows
-            </h1>
-            <p class="leading-relaxed">
-              Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-              microdosing tousled waistcoat.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="lg:w-1/3 sm:w-1/2 p-4">
-        <div class="flex relative">
-          <img
-            alt="gallery"
-            class="absolute inset-0 w-full h-full object-cover object-center"
-            src="https://dummyimage.com/602x362"
-          />
-          <div
-            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-          >
-            <h2
-              class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-            >
-              THE SUBTITLE
-            </h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-              Neptune
-            </h1>
-            <p class="leading-relaxed">
-              Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-              microdosing tousled waistcoat.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="lg:w-1/3 sm:w-1/2 p-4">
-        <div class="flex relative">
-          <img
-            alt="gallery"
-            class="absolute inset-0 w-full h-full object-cover object-center"
-            src="https://dummyimage.com/605x365"
-          />
-          <div
-            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-          >
-            <h2
-              class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-            >
-              THE SUBTITLE
-            </h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-              Holden Caulfield
-            </h1>
-            <p class="leading-relaxed">
-              Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-              microdosing tousled waistcoat.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="lg:w-1/3 sm:w-1/2 p-4">
-        <div class="flex relative">
-          <img
-            alt="gallery"
-            class="absolute inset-0 w-full h-full object-cover object-center"
-            src="https://dummyimage.com/606x366"
-          />
-          <div
-            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-          >
-            <h2
-              class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"
-            >
-              THE SUBTITLE
-            </h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-              Alper Kamu
-            </h1>
-            <p class="leading-relaxed">
-              Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-              microdosing tousled waistcoat.
-            </p>
-          </div>
-        </div>
-      </div>
+      {#each tab as photo}
+        <Photo photoInfo={photo} />
+      {/each}
     </div>
   </div>
 </section>

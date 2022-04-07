@@ -1,8 +1,8 @@
 <div class="header-container bg-gray-900">
     <div class="page-links">
-        <a href="/">Strona główna</a>
-        <a href="/gallery">Galeria</a>
-        <a href="/article">Article</a>
+        <a href="/">Home</a>
+        <a href="#/gallery">Galeria</a>
+        <a href="/article">Ciekawostki </a>
         <a href="/comments">Komentarze</a>
     </div>
     <div class="cms-links">

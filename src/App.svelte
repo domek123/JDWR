@@ -4,7 +4,6 @@
   import { wrap } from "svelte-spa-router/wrap";
 
   import Header from "./components/Header.svelte";
-  import Slider from "./components/Slider.svelte";
   import Footer from "./components/Footer.svelte";
   import Contact from "./routes/Contact.svelte";
   import Home from "./routes/Home.svelte";
@@ -40,7 +39,7 @@
 <style>
   .page-container {
     justify-content: space-between;
-    height: 100vh;
+    height: 100%;
   }
   .main-container {
     text-align: center;
