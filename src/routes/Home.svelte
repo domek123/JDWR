@@ -1,5 +1,6 @@
 <script>
   import News from "../components/News.svelte";
+  import Slider from "../components/Slider.svelte";
   let newsArray = [
     {
       url: "https://kuyou.id/content/images/ctc_2020021605150668915.jpg",
@@ -19,52 +20,60 @@
   ];
 </script>
 
-<section class="news">
-  <h1 class="news-head text-white">News</h1>
-  <div class="news-content">
-    {#each newsArray as news}
-      <News info={news} />
-    {/each}
-  </div>
-</section>
-<div class="white-line" />
-<section class="main-section">
-  <article class="main-article">
-    <div class="text-white p-6 main-info">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum.
+<Slider />
+<div class="main-page-container">
+  <section class="news">
+    <h1 class="news-head text-white">News</h1>
+    <div class="news-content">
+      {#each newsArray as news}
+        <News info={news} />
+      {/each}
     </div>
-    <div class=" p-6 main-image">
-      <img src="./img/galaxy.jpg" alt="galaxy image" class="main-img" />
-    </div>
-  </article>
+  </section>
+  <div class="white-line" />
+  <section class="main-section">
+    <article class="main-article">
+      <div class="text-white p-6 main-info">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </div>
+      <div class=" p-6 main-image">
+        <img src="./img/galaxy.jpg" alt="galaxy image" class="main-img" />
+      </div>
+    </article>
 
-  <article class="main-article">
-    <div class=" p-6 main-image">
-      <img src="./img/galaxy.jpg" alt="galaxy image" class="main-img" />
-    </div>
-    <div class="text-white p-6 main-info">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum.
-    </div>
-  </article>
-</section>
+    <article class="main-article">
+      <div class=" p-6 main-image">
+        <img src="./img/galaxy.jpg" alt="galaxy image" class="main-img" />
+      </div>
+      <div class="text-white p-6 main-info">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </div>
+    </article>
+  </section>
+</div>
 
 <style>
+  .main-page-container {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
   .news-content {
     display: flex;
     justify-content: space-between;

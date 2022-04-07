@@ -6,7 +6,6 @@
 
 <Carousel autoplay autoplayDuration={speed} pauseOnFocus>
   {#each colors as color}
-    <!-- <div style="width:100%;height:200px;background-color:{color};" /> -->
     <img src={color} alt={color} class="slider-img" />
   {/each}
 </Carousel>
