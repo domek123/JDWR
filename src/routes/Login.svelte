@@ -1,39 +1,44 @@
 <script>
     let info = ""
-    import { userName } from '../store.js'
+    import { userName , userLogged } from '../store.js'
     
    
     const registerUser = () => {
-        const fullName = document.getElementById("fullName").value
+       
         const login = document.getElementById("Login").value
         const password = document.getElementById("Password").value
 
-        const body = JSON.stringify({fullName, login, password})
+        const body = JSON.stringify( {login, password})
         const headers = { "Content-Type": "application/json" };
-        fetch("http://localhost:3421/Register",{method: 'post', body, headers}).then(response => response.json()).then(data => {
+        fetch("http://localhost:3421/Login",{method: 'post', body, headers}).then(response => response.json()).then(data => {
             if(typeof data.Objects== "string"){
-                info = "taki login już istnieje"
+                info = "Niepoprawne dane logowania"
             }else{
                 info = ""
                 console.log(data)
-                userName.update(n => n + data.Objects[1])
+                userName.set(data.Objects[1])
+                userLogged.set({
+                    "fullName": data.Objects[0],
+                    "isAdmin": data.Objects[3],
+                    "id": data.Objects[4]
+                })
                 window.location.href = "/#"
             }
+            console.log(data)
         })
     }
 </script>
 
 <main>
-    <label for="fullname">Imie
-    <input type="text" name="fullname" id="fullName" autocomplete="off" />
-    </label>
+   
+   
      <label for="login">Login
     <input type="text" name="login" id="Login" autocomplete="off" />
     </label>
      <label for="password">Password
     <input type="text" name="password" id="Password" autocomplete="off" />
     </label>
-    <button on:click={registerUser}>Register</button>
+    <button on:click={registerUser}>Log In</button>
     <p>{info}</p>
 
 </main>

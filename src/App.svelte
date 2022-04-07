@@ -1,7 +1,7 @@
 <script>
   import Tailwindcss from "./Tailwindcss.svelte";
   import Router from "svelte-spa-router";
- import {wrap} from 'svelte-spa-router/wrap'
+  import { userName, userLogged } from './store.js'
 
   import Header from "./components/Header.svelte";
   import Slider from "./components/Slider.svelte";
@@ -11,16 +11,27 @@
   import Gallery from "./routes/Gallery.svelte";
   import NotFound from "./routes/NotFound.svelte";
   import Register from './routes/Register.svelte'
+  import Login from './routes/Login.svelte'
 
-  export let num 
-  $: userName = "zzz"
-  const handle = (event) => userName = event
+  let userNameValue
+  let userLoggedValue
+
+  userLogged.subscribe(value => {
+    console.log(value)
+    userLoggedValue = value
+  })
+
+	userName.subscribe(value => {
+    console.log(value)
+		userNameValue = value;
+	});
+  
 </script>
 
 <Tailwindcss />
 <div class="flex flex-col">
   <header>
-    {userName}
+    {userNameValue}
     <Header />
     <Slider />
   </header>
@@ -32,13 +43,8 @@
         "/": Home,
         "/contact": Contact,
         "/gallery": Gallery,
-        "/Register": wrap({
-          component:Register,
-          props: {
-            userName: userName,
-            handle: ()=>{handle}
-          }
-        }),
+        "/Register": Register,
+        "/login": Login,
         "*": NotFound,
       }}
     />

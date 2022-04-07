@@ -1,5 +1,6 @@
 <script>
   import News from "../components/News.svelte";
+  
   let newsArray = [
     {
       url: "https://kuyou.id/content/images/ctc_2020021605150668915.jpg",
