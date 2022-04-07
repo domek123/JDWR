@@ -1,13 +1,32 @@
+<script>
+    import { userName, userLogged } from "../store.js";
+
+    let userNameValue = "";
+    let userLoggedValue;
+
+    userName.subscribe((value) => (userNameValue = value));
+
+    const handleLogOut = () => {
+        userName.set("");
+        userLogged.set({});
+    };
+</script>
+
 <div class="header-container bg-gray-900">
     <div class="page-links">
         <a href="/">Home</a>
         <a href="#/gallery">Galeria</a>
-        <a href="/article">Ciekawostki </a>
+        <a href="/article">Ciekawostki</a>
         <a href="/comments">Komentarze</a>
     </div>
+
     <div class="cms-links">
-        <a href="/login">Login</a>
-        <a href="#/Register">Register</a>
+        {#if userNameValue == ""}
+            <a href="#/login">Login</a>
+            <a href="#/Register">Register</a>
+        {:else}
+            <button on:click={handleLogOut}>Log out</button>
+        {/if}
     </div>
 </div>
 

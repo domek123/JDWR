@@ -28,14 +28,35 @@ def Register():
             'isAdmin': False
         })
         myConnection.commit()
-        myCursor.execute("SELECT *,oid FROM UsersData ")
-        records = myCursor.fetchall()
+        myCursor.execute("SELECT *,oid FROM UsersData WHERE login='" + content['login'] + "'")
+        records = myCursor.fetchone()
 
 
     responseObj = {'Objects': records}
     myConnection.close()
 
     return jsonify(responseObj)
+
+@app.route('/Login' , methods=['POST'])
+@cross_origin()
+def Login():
+    content = request.json
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    records = ""
+
+    myCursor.execute("SELECT *,oid FROM UsersData WHERE login='" + content['login'] + "' AND password='" + content['password'] + "'")
+    if myCursor.fetchone() == None:
+        records = "Niepoprawne dane"
+    else:
+        myCursor.execute("SELECT *,oid FROM UsersData WHERE login='" + content['login'] + "'")
+        records = myCursor.fetchone()
+        print(records)
+    
+    myConnection.close()
+    responseObj = {'Objects' : records}
+    return jsonify(responseObj)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=3421)

@@ -1,7 +1,8 @@
 <script>
     let info = ""
+    import { userName } from '../store.js'
     
-    export let handle
+   
     const registerUser = () => {
         const fullName = document.getElementById("fullName").value
         const login = document.getElementById("Login").value
@@ -14,7 +15,8 @@
                 info = "taki login już istnieje"
             }else{
                 info = ""
-                handle(data.Objects.login)
+                console.log(data)
+                userName.update(n => n + data.Objects[1])
                 window.location.href = "/#"
             }
         })
