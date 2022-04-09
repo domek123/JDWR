@@ -32,18 +32,19 @@
     {userNameValue}
     <Header />
   </header>
-
   <div class="main-container">
-    <Router
-      routes={{
-        "/": Home,
-        "/contact": Contact,
-        "/gallery": Gallery,
-        "/Register": Register,
-        "/login": Login,
-        "*": NotFound,
-      }}
-    />
+    <main>
+      <Router
+        routes={{
+          "/": Home,
+          "/contact": Contact,
+          "/gallery": Gallery,
+          "/Register": Register,
+          "/login": Login,
+          "*": NotFound,
+        }}
+      />
+    </main>
   </div>
   <Footer />
 </div>
