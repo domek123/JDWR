@@ -57,6 +57,16 @@ def Login():
     responseObj = {'Objects' : records}
     return jsonify(responseObj)
 
+@app.route('/getUsers' , methods=['GET'])
+@cross_origin()
+def getUsers():
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT *,oid FROM UsersData")
+    records = myCursor.fetchall()
+    myConnection.close()
+    responseObj = {"Users": records}
+    return jsonify(responseObj)
 
 if __name__ == '__main__':
     app.run(debug=True, port=3421)

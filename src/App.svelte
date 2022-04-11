@@ -11,6 +11,7 @@
   import NotFound from "./routes/NotFound.svelte";
   import Register from "./routes/Register.svelte";
   import Login from "./routes/Login.svelte";
+  import Users from './routes/Users.svelte'
 
   let userNameValue;
   let userLoggedValue;
@@ -41,6 +42,7 @@
           "/gallery": Gallery,
           "/Register": Register,
           "/login": Login,
+          "/Users": Users,
           "*": NotFound,
         }}
       />
@@ -54,7 +56,10 @@
     justify-content: space-between;
     height: 100%;
   }
-  .main-container {
-    text-align: center;
+  main > .UserDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
 </style>

@@ -5,16 +5,22 @@
     let userLoggedValue;
 
     userName.subscribe((value) => (userNameValue = value));
+    userLogged.subscribe((value) => userLoggedValue = value)
 
     const handleLogOut = () => {
         userName.set("");
         userLogged.set({});
+        window.location.href = "/#"
     };
+
+    const handleShowUsers = () => {
+        window.location.href = "/#/Users"
+    }
 </script>
 
 <div class="header-container bg-gray-900">
     <div class="page-links">
-        <a href="/">Home</a>
+        <a href="/#">Home</a>
         <a href="#/gallery">Galeria</a>
         <a href="/article">Ciekawostki</a>
         <a href="/comments">Komentarze</a>
@@ -26,6 +32,9 @@
             <a href="#/Register">Register</a>
         {:else}
             <button on:click={handleLogOut}>Log out</button>
+            {#if userLoggedValue.isAdmin == 1}
+                <button on:click={handleShowUsers}>Users</button>
+            {/if}
         {/if}
     </div>
 </div>
