@@ -25,6 +25,5 @@ myCursor.execute("INSERT INTO UsersData VALUES(:FullName, :login, :password, :is
     "isAdmin" : True
 })
 myConnection.commit()
-
 #konczenie połączenia
 myConnection.close()

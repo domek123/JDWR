@@ -5,25 +5,25 @@
     let userLoggedValue;
 
     userName.subscribe((value) => (userNameValue = value));
-    userLogged.subscribe((value) => userLoggedValue = value)
+    userLogged.subscribe((value) => (userLoggedValue = value));
 
     const handleLogOut = () => {
         userName.set("");
         userLogged.set({});
-        window.location.href = "/#"
+        window.location.href = "/#";
     };
 
     const handleShowUsers = () => {
-        window.location.href = "/#/Users"
-    }
+        window.location.href = "/#/Users";
+    };
 </script>
 
 <div class="header-container bg-gray-900">
     <div class="page-links">
         <a href="/#">Home</a>
         <a href="#/gallery">Galeria</a>
-        <a href="/article">Ciekawostki</a>
-        <a href="/comments">Komentarze</a>
+        <a href="/comments">Dyskusje</a>
+        <a href="/contact">Kontakt</a>
     </div>
 
     <div class="cms-links">

@@ -7,6 +7,7 @@
 <Carousel autoplay autoplayDuration={speed} pauseOnFocus>
   {#each colors as color}
     <img src={color} alt={color} class="slider-img" />
+    <div class="opis"><h1>AAAA</h1></div>
   {/each}
 </Carousel>
 
@@ -15,5 +16,11 @@
     height: 500px;
     border-bottom: 4px solid gray;
     border-top: 4px solid gray;
+  }
+  .opis {
+    z-index: 10;
+    font-size: 60px;
+    position: absolute;
+    color: White;
   }
 </style>

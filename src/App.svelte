@@ -5,13 +5,13 @@
 
   import Header from "./components/Header.svelte";
   import Footer from "./components/Footer.svelte";
-  import Contact from "./routes/Contact.svelte";
   import Home from "./routes/Home.svelte";
   import Gallery from "./routes/Gallery.svelte";
+  import Contact from "./routes/Contact.svelte";
   import NotFound from "./routes/NotFound.svelte";
   import Register from "./routes/Register.svelte";
   import Login from "./routes/Login.svelte";
-  import Users from './routes/Users.svelte'
+  import Users from "./routes/Users.svelte";
 
   let userNameValue;
   let userLoggedValue;
@@ -38,8 +38,8 @@
       <Router
         routes={{
           "/": Home,
-          "/contact": Contact,
           "/gallery": Gallery,
+          "/contact": Contact,
           "/Register": Register,
           "/login": Login,
           "/Users": Users,
@@ -56,10 +56,9 @@
     justify-content: space-between;
     height: 100%;
   }
-  main > .UserDiv{
+  main > .UserDiv {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
 </style>
