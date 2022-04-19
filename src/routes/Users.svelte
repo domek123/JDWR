@@ -6,34 +6,7 @@
     let usersList = []
     let isMounted = false
 
-    const change = event => {
-
-  let files = event.target.files
-  let fileName = files[0].name
-  
-  // your code start here
-  var data = new FormData()
-  data.append('files', files[0]) // maybe it should be '{target}_cand'
-  data.append('name', fileName)
-  console.log(data.get('files'))
-
-  // let url = "http://localhost:5001/v1/cand"
-  let url = "http://localhost:3421/file"
-  fetch(url,{
-    method:"POST",
-    // body: {files:files[0]}, // wrong
-    body: data,
-  })
-  .then(function(response){
-    return response.json()
-  })
-  // .then(function(data){ // use different name to avoid confusion
-  .then(function(res){
-    console.log('success')
-    console.log(res)
-  })
-
-}
+    
 
     const getUsers = () => {
         
@@ -72,7 +45,7 @@
     </div>
 </div>
 
-<input type="file" id="fileUpload" on:change={(e) => change(e)} />
+
 
 <style>
     .UserDiv{

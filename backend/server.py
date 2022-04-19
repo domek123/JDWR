@@ -5,11 +5,13 @@ import os
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = '../public/news_img'
+UPLOAD_FOLDER_GALLERY = '../public/gallery'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Qwerty123!'
 cors = CORS(app)
 app.config['CORS_HEADERS'] = "Content-Type"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER_GALLERY'] = UPLOAD_FOLDER_GALLERY
 
 @app.route('/Register', methods=['POST'])
 @cross_origin()
@@ -103,13 +105,96 @@ def editUser():
 def file():
     print(request.files.getlist('files'))
 
-    for f in request.files.getlist('files'):
+    try:
+        for f in request.files.getlist('files'):
+            filename = secure_filename(f.filename)
+            f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return jsonify({"info": "success"})
+    except:
+        return jsonify({"info" : 'fail'})
 
-        filename = secure_filename(f.filename)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-    return  jsonify({"a" : "b"})
 
+
+
+@app.route('/addArticle' , methods=['POST'])
+@cross_origin()
+def addArticle():
+   content = request.json
+   myConnection = sqlite3.connect('./modules/db.sqlite')
+   myCursor = myConnection.cursor()
+   myCursor.execute("INSERT INTO Articles VALUES(:ArticleID , :header, :content, :photoName)", {
+       'ArticleID': content['ArticleID'],
+       'header': content['header'],
+       'content': content['content'],
+       'photoName': content['photoName']
+   })
+   myConnection.commit()
+   myCursor.execute("SELECT * FROM Articles")
+   print(myCursor.fetchall())
+   myConnection.close()
+
+
+
+   return jsonify(request.json)
+
+@app.route('/getArticles' , methods=['GET'])
+@cross_origin()
+def getArticle():
+    records = []
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT * FROM Articles")
+    records = myCursor.fetchall()
+    records.reverse()
+
+    return  jsonify({"records" : records})
+
+@app.route('/addToGalleryFile' , methods=['POST'])
+@cross_origin()
+def addToGalleryFile():
+    try:
+        for f in request.files.getlist('files'):
+            filename = secure_filename(f.filename)
+            f.save(os.path.join(app.config['UPLOAD_FOLDER_GALLERY'], filename))
+        return jsonify({"info": "success"})
+    except:
+        return jsonify({"info" : 'fail'})
+
+
+@app.route('/addToGallery' , methods=['POST'])
+@cross_origin()
+def addToGallery():
+   content = request.json
+   myConnection = sqlite3.connect('./modules/db.sqlite')
+   myCursor = myConnection.cursor()
+   myCursor.execute("INSERT INTO Gallery VALUES(:PhotoID , :title, :text, :photoName)", {
+       'PhotoID': content['PhotoID'],
+       'title': content['title'],
+       'text': content['text'],
+       'photoName': content['photoName']
+   })
+   myConnection.commit()
+   myCursor.execute("SELECT * FROM Gallery")
+   print(myCursor.fetchall())
+   myConnection.close()
+
+
+
+   return jsonify(request.json)
+
+
+@app.route('/getGallery' , methods=['GET'])
+@cross_origin()
+def getGallery():
+    records = []
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT * FROM Gallery")
+    records = myCursor.fetchall()
+    
+
+    return  jsonify({"records" : records})
 
 if __name__ == '__main__':
     app.run(debug=True, port=3421)

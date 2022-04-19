@@ -1,6 +1,23 @@
 <script>
   import Photo from "../components/gallery/Photo.svelte";
-  let tab = [
+  import {userLogged} from '../store.js'
+   import { onMount } from 'svelte';
+    let isUserAdmin = 0
+    userLogged.subscribe(val => isUserAdmin = val.isAdmin)
+    let tab = []
+
+    const getGallery = () => {
+       fetch('http://localhost:3421/getGallery').then(response => response.json()).then(data => {
+            data.records.forEach(item => {
+               tab.push({PhotoID: item[0] , title: item[1] , text: item[2] , src: "./gallery/" + item[3]})
+                
+            })
+           tab=tab
+        })
+    }
+
+    onMount(() => getGallery())
+  /*let tab = [
     {
       src: "./img/Merkury.jpg",
       title: "Merkury",
@@ -31,7 +48,7 @@
       title: "Saturn",
       text: "Pierścienie Saturna są zrobione z kawałków skał i lodu. Saturn jest najlżejszą planetą w naszym układzie słonecznym.",
     },
-  ];
+   ];*/
 </script>
 
 <section class="mt-10">
@@ -50,3 +67,7 @@
     </div>
   </div>
 </section>
+{#if isUserAdmin == 1}
+
+    <a href="/#/AddPhoto"><div>Dodaj zdjęcie</div></a>
+{/if}

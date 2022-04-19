@@ -14,6 +14,8 @@
   import Users from "./routes/Users.svelte";
   import EditUser from './routes/EditUser.svelte'
   import Articles from './routes/Articles.svelte'
+  import AddArticle from './routes/AddArticle.svelte'
+  import AddPhoto from './routes/AddPhoto.svelte'
 
   let userNameValue;
   let userLoggedValue;
@@ -47,6 +49,8 @@
           "/Users": Users,
           "/EditUser": EditUser,
           "/Articles": Articles,
+          "/AddArticle": AddArticle,
+          '/AddPhoto': AddPhoto,
           "*": NotFound,
         }}
       />

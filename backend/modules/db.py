@@ -18,6 +18,15 @@ myCursor.execute("""CREATE TABLE UsersData (
 #zapisywanie zmian
 myConnection.commit()
 
+myCursor.execute("""CREATE TABLE Articles (
+                ArticleID text,
+                header text,
+                content text,
+                photoName text
+                )""")
+
+myConnection.commit()
+
 myCursor.execute("INSERT INTO UsersData VALUES(:FullName, :login, :password, :isAdmin )",{
     "FullName": "admin",
     "login": "admin",
