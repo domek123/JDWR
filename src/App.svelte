@@ -12,6 +12,8 @@
   import Register from "./routes/Register.svelte";
   import Login from "./routes/Login.svelte";
   import Users from "./routes/Users.svelte";
+  import EditUser from './routes/EditUser.svelte'
+  import Articles from './routes/Articles.svelte'
 
   let userNameValue;
   let userLoggedValue;
@@ -43,6 +45,8 @@
           "/Register": Register,
           "/login": Login,
           "/Users": Users,
+          "/EditUser": EditUser,
+          "/Articles": Articles,
           "*": NotFound,
         }}
       />
@@ -56,9 +60,5 @@
     justify-content: space-between;
     height: 100%;
   }
-  main > .UserDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  
 </style>

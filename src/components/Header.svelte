@@ -22,7 +22,7 @@
     <div class="page-links">
         <a href="/#">Home</a>
         <a href="#/gallery">Galeria</a>
-        <a href="/comments">Dyskusje</a>
+        <a href="/#/Articles">Artykuły</a>
         <a href="/contact">Kontakt</a>
     </div>
 
