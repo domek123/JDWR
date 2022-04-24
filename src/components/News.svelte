@@ -1,9 +1,7 @@
 <script>
     import { userName } from '../store'
     export let info;
-    const handleTest = () => {
-        userName.set("aaa")
-    }
+    
 </script>
 
 <div class="xl:w-1/3 md:w-1/2 p-4">
@@ -13,7 +11,7 @@
         <img
             class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
             src={info.url}
-            alt="Image Size 720x400"
+            alt=" Size 720x400"
         />
         <h2 class="text-lg text-white font-medium title-font mb-4 underline">
             {info.title}
@@ -21,7 +19,7 @@
         <p class="leading-relaxed text-base">
             {info.text}
         </p>
-        <button id="check" on:click={handleTest}>sprawdz</button>
+        
     </div>
 </div>
 

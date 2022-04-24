@@ -196,5 +196,15 @@ def getGallery():
 
     return  jsonify({"records" : records})
 
+@app.route('/getSingleArticle' , methods=['POST'])
+@cross_origin()
+def getSingleArticle():
+    content = request.json['ArticleID']
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT * FROM Articles WHERE ArticleID='" + content +"'")
+    record = myCursor.fetchone()
+    return jsonify(record)
+
 if __name__ == '__main__':
     app.run(debug=True, port=3421)

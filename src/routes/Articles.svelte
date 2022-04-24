@@ -1,10 +1,10 @@
  <script>
-    import {userLogged} from '../store.js'
+    import {userLogged  , articleList} from '../store.js'
     import ArticleSmall from './ArticleSmall.svelte'
     import { onMount } from 'svelte';
     let isUserAdmin = 0
     userLogged.subscribe(val => isUserAdmin = val.isAdmin)
-
+ 
     let ArticlesArray = []
 
     const getArticles = () => {
@@ -15,6 +15,7 @@
                 
             })
             ArticlesArray = ArticlesArray
+            articleList.set(ArticlesArray)
         })
 
     }

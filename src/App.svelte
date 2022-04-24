@@ -16,6 +16,7 @@
   import Articles from './routes/Articles.svelte'
   import AddArticle from './routes/AddArticle.svelte'
   import AddPhoto from './routes/AddPhoto.svelte'
+  import ArticleFile from './routes/ArticleFile.svelte'
 
   let userNameValue;
   let userLoggedValue;
@@ -51,6 +52,7 @@
           "/Articles": Articles,
           "/AddArticle": AddArticle,
           '/AddPhoto': AddPhoto,
+          '/Article/:bound': ArticleFile,
           "*": NotFound,
         }}
       />

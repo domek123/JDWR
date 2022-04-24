@@ -18,6 +18,7 @@
         <p class="leading-relaxed text-base">
             {info.content}
         </p>
+        <a href="/#/Article/{info.ArticleID}">Zobacz więcej</a>
         
     </div>
 </div>
