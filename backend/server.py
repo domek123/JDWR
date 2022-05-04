@@ -4,6 +4,9 @@ import sqlite3
 import os
 from werkzeug.utils import secure_filename
 
+
+
+
 UPLOAD_FOLDER = '../public/news_img'
 UPLOAD_FOLDER_GALLERY = '../public/gallery'
 app = Flask(__name__)
@@ -205,6 +208,35 @@ def getSingleArticle():
     myCursor.execute("SELECT * FROM Articles WHERE ArticleID='" + content +"'")
     record = myCursor.fetchone()
     return jsonify(record)
+
+@app.route('/addComment', methods=['POST'])
+@cross_origin()
+def addComment():
+    content = request.json
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("INSERT INTO Comments VALUES(:ArticleID , :AuthorLogin, :AuthorName, :Content)", {
+        'ArticleID': content['ArticleID'],
+        'AuthorLogin': content['AuthorLogin'],
+        'AuthorName': content['AuthorName'],
+        'Content': content['Content']
+    })
+
+    myConnection.commit()
+    myCursor.execute("SELECT * FROM Comments")
+    records = myCursor.fetchall()
+    myConnection.close()
+
+    return jsonify({'records': records})
+
+@app.route('/getComments' , methods=['GET'])
+@cross_origin()
+def getComments():
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT * FROM Comments")
+    records = {'records': myCursor.fetchall()}
+    return jsonify(records)
 
 if __name__ == '__main__':
     app.run(debug=True, port=3421)

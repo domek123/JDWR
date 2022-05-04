@@ -1,11 +1,12 @@
  <script>
-    import {userLogged  , articleList} from '../store.js'
+    import {userLogged  , articleList, commentsList} from '../store.js'
     import ArticleSmall from './ArticleSmall.svelte'
     import { onMount } from 'svelte';
     let isUserAdmin = 0
     userLogged.subscribe(val => isUserAdmin = val.isAdmin)
  
     let ArticlesArray = []
+    let commentsArray = []
 
     const getArticles = () => {
 
@@ -16,6 +17,13 @@
             })
             ArticlesArray = ArticlesArray
             articleList.set(ArticlesArray)
+            fetch('http://localhost:3421/getComments').then(response => response.json()).then(data =>{
+                 data.records.forEach(item => {
+                commentsArray.push({ArticleID: item[0] , AuthorLogin: item[1] , AuthorName: item[2] , content :  item[3]})
+                
+            })
+            commentsList.set(commentsArray)
+            })
         })
 
     }

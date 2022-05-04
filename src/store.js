@@ -5,3 +5,4 @@ export const userLogged = writable({});
 export const userUpdated = writable({});
 export const userToEdit = writable({});
 export const articleList = writable([]);
+export const commentsList = writable([]);
