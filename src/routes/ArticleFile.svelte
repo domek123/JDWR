@@ -2,22 +2,24 @@
 
     import {onMount} from 'svelte'
     export let params
-    import {userLogged , userName , commentsList} from '../store.js'
+    import {userLogged , userName , commentsList, settings} from '../store.js'
     import Content from "../components/Article/Content.svelte"
     import Header from "../components/Article/Header.svelte"
     import Comment from "../components/Article/Comment.svelte"
     import List from '../components/List.svelte'
+
+    let styles = {
+        color: "red"
+    }
+
+    settings.subscribe(value => console.log(value))
 
     
     let info = {}
     let commentValue
     let comments = []
 
-    const items = [
-        
-        {value: "CONTENT" , component: Content},
-        {value: "HEADER" , component: Header},
-    ]
+    let items = []
 
     let userInfo = null
     let userNameInfo = undefined
@@ -30,7 +32,12 @@
    
 
     const getArticle = () => {
-        fetch("http://localhost:3421/getSingleArticle", {method: 'post' , body: JSON.stringify({ArticleID: params.bound}), headers: {"Content-Type": "application/json" }}).then(response => response.json()).then(data => info = [...data])
+        fetch("http://localhost:3421/getSingleArticle", {method: 'post' , body: JSON.stringify({ArticleID: params.bound}), headers: {"Content-Type": "application/json" }}).then(response => response.json()).then(data => {
+            info = [...data]
+            items.push({value: data[1] , component: Header})
+            items.push({value: data[2] , component: Content})
+            items= [...items]
+        })
     }
 
     onMount(() => getArticle())
@@ -40,7 +47,7 @@
         const headers = { "Content-Type": "application/json" };
           fetch("http://localhost:3421/addComment" , {method: 'post' , body , headers}).then(response => response.json()).then(data => {
               const commentsArray = []
-
+                
                 data.records.forEach(item => {
                 commentsArray.push({ArticleID: item[0] , AuthorLogin: item[1] , AuthorName: item[2] , content :  item[3]})
                 
@@ -53,12 +60,11 @@
 
 </script>
 
-<div class="Article-container">
+<div class="Article-container" style="--colortext: {styles.color}">
     <div class="content-article">
-        <h1>{info[1]}</h1>
-        <div>{info[2]}</div>
+        <List {items}/>
         <img  src={`./news_img/${info[3] == undefined ? "tlo.jpg" : info[3]}`} alt="something"/>
-        <!-- <List {items}/> -->
+        
        
     </div>
     <div>Komentarze</div>
@@ -84,10 +90,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: white;
+        color: var(--colortext);
     }
     .content-article{
-        width: 70%;
+        width: 90%;
         display: flex;
         flex-direction: column;
         align-items: center;

@@ -1,9 +1,11 @@
  <script>
-    import {userLogged  , articleList, commentsList} from '../store.js'
+    import {userLogged  , articleList, commentsList, settings} from '../store.js'
     import ArticleSmall from './ArticleSmall.svelte'
     import { onMount } from 'svelte';
     let isUserAdmin = 0
-    userLogged.subscribe(val => isUserAdmin = val.isAdmin)
+    userLogged.subscribe(val => {isUserAdmin = val.isAdmin , console.log("XDDDDDDD")})
+    settings.subscribe(val => {console.log(val)})
+   
  
     let ArticlesArray = []
     let commentsArray = []

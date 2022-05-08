@@ -1,7 +1,8 @@
 <script>
   import Tailwindcss from "./Tailwindcss.svelte";
   import Router from "svelte-spa-router";
-  import { userName, userLogged } from "./store.js";
+  import { userName, userLogged, settings } from "./store.js";
+  import {onMount} from 'svelte'
 
   import Header from "./components/Header.svelte";
   import Footer from "./components/Footer.svelte";
@@ -17,12 +18,14 @@
   import AddArticle from './routes/AddArticle.svelte'
   import AddPhoto from './routes/AddPhoto.svelte'
   import ArticleFile from './routes/ArticleFile.svelte'
+  import EditSlider from './routes/EditSlider.svelte'
+  import SettingsHome from './routes/SettingsHome.svelte'
 
   let userNameValue;
   let userLoggedValue;
 
   userLogged.subscribe((value) => {
-    console.log(value);
+    console.log(value , "aaaa");
     userLoggedValue = value;
   });
 
@@ -30,6 +33,15 @@
     console.log(value);
     userNameValue = value;
   });
+
+  onMount(() => {
+    fetch('http://localhost:3421/getConfig').then(response => response.json()).then(data => {
+      let obj = {}
+      data.records.forEach(item => obj[item[0]] = item[1])
+      console.log(obj)
+      settings.set(obj)
+    })
+  })
 </script>
 
 <Tailwindcss />
@@ -53,6 +65,8 @@
           "/AddArticle": AddArticle,
           '/AddPhoto': AddPhoto,
           '/Article/:bound': ArticleFile,
+          '/editSlider': EditSlider,
+          '/settings':SettingsHome,
           "*": NotFound,
         }}
       />

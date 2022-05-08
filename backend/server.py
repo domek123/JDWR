@@ -9,12 +9,37 @@ from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = '../public/news_img'
 UPLOAD_FOLDER_GALLERY = '../public/gallery'
+UPLOAD_FOLDER_SLIDER = '../public/slider'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Qwerty123!'
 cors = CORS(app)
 app.config['CORS_HEADERS'] = "Content-Type"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_FOLDER_GALLERY'] = UPLOAD_FOLDER_GALLERY
+app.config['UPLOAD_FOLDER_SLIDER'] = UPLOAD_FOLDER_SLIDER
+
+
+@app.route('/getConfig' , methods=['GET'])
+@cross_origin()
+def getConfig():
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT * FROM config")
+    records = {'records': myCursor.fetchall()}
+    return jsonify(records)
+
+
+@app.route('/editConfig' , methods=['POST'])
+@cross_origin()
+def editConfig():
+    content = request.json
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    for item in content['listOfSettings']:
+        myCursor.execute("UPDATE config SET configValue='" + item['value'] + "' WHERE configName='" + item['name'] +"'")
+        myConnection.commit()
+    myConnection.close()
+    return jsonify({"a": "b"})
 
 @app.route('/Register', methods=['POST'])
 @cross_origin()
@@ -237,6 +262,66 @@ def getComments():
     myCursor.execute("SELECT * FROM Comments")
     records = {'records': myCursor.fetchall()}
     return jsonify(records)
+@app.route('/addSlidePhoto' , methods=['POST'])
+@cross_origin()
+def addSlidePhoto():
+    try:
+        for f in request.files.getlist('files'):
+            filename = secure_filename(f.filename)
+            f.save(os.path.join(app.config['UPLOAD_FOLDER_SLIDER'], filename))
+        return jsonify({"info": "success"})
+    except:
+        return jsonify({"info" : 'fail'})
+
+
+@app.route('/addSlide' , methods=['POST'])
+@cross_origin()
+def addSlide():
+   content = request.json
+   myConnection = sqlite3.connect('./modules/db.sqlite')
+   myCursor = myConnection.cursor()
+   myCursor.execute("INSERT INTO Slider VALUES(:photoName , :mainHeder, :content)", {
+       'photoName': content['photoName'],
+       'mainHeder': content['mainHeader'],
+       'content': content['content'],
+
+   })
+   myConnection.commit()
+   myCursor.execute("SELECT * FROM Slider")
+   print(myCursor.fetchall())
+   myConnection.close()
+
+
+
+   return jsonify(request.json)
+
+@app.route('/getSlider' , methods=['GET'])
+@cross_origin()
+def getSlider():
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT * FROM config WHERE configName='SliderDuration'")
+    duration = myCursor.fetchone()
+    myCursor.execute('SELECT *,oid FROM Slider')
+    records = {'records': myCursor.fetchall(), 'duration' : duration}
+    return jsonify(records)
+
+
+@app.route('/getNews' , methods=['POST'])
+@cross_origin()
+def getNews():
+    content = request.json
+    size = int(content['number'])
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute('SELECT * FROM Articles ORDER BY oid DESC LIMIT ' + str(size))
+
+    records = myCursor.fetchall()
+    myConnection.close()
+
+    return jsonify({'records' :records})
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=3421)
