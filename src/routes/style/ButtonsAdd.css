@@ -1,0 +1,27 @@
+.add {
+    display: block;
+    width: 150px;
+    color: white;
+    font-weight: 700;
+    margin-left: 15px;
+    text-decoration: none;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: all 0.5s ease;
+}
+
+.add:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+.add:visited {
+    color: white
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}

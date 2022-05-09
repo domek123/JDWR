@@ -10,7 +10,6 @@
     const handleLogOut = () => {
         userName.set("");
         userLogged.set({});
-        window.location.href = "/#";
     };
 
     const handleShowUsers = () => {
@@ -23,7 +22,6 @@
         <a href="/#">Home</a>
         <a href="#/gallery">Galeria</a>
         <a href="/#/Articles">Artykuły</a>
-        <a href="/contact">Kontakt</a>
     </div>
 
     <div class="cms-links">
@@ -31,9 +29,10 @@
             <a href="#/login">Login</a>
             <a href="#/Register">Register</a>
         {:else}
-            <button on:click={handleLogOut}>Log out</button>
+            <a href="/#" on:click={handleLogOut}>Log out</a>
             {#if userLoggedValue.isAdmin == 1}
-                <button on:click={handleShowUsers}>Users</button>
+                <a href="/#/Users">Users</a>
+                <a href="/#/settings">Settings</a>
             {/if}
         {/if}
     </div>

@@ -1,13 +1,22 @@
 <script>
-    export let value
+    export let value;
 
-    console.log(value)
+    console.log(value);
 </script>
 
-<div>
-
-    <div>{value.AuthorName}</div>
-    <div>{value.AuthorLogin}</div>
-    <div>{value.content}</div>
-
+<div class="com">
+    <div class="com-login">{value.AuthorLogin}</div>
+    <div class="com-content">{value.content}a</div>
 </div>
+
+<style>
+    .com {
+        border-bottom: 1px dashed rgba(128, 128, 128, 0.5);
+    }
+    .com-login {
+        font-weight: bolder;
+    }
+    .com-content {
+        margin-left: 10px;
+    }
+</style>

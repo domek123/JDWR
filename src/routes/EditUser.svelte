@@ -1,45 +1,46 @@
 <script>
-    import './Form.css'
-    import {userToEdit} from "../store.js"
-    let fullName = ""
-    let password = ""
-    let login = ""
-    let isAdmin = false
-    let id 
+    import "./Form.css";
+    import { userToEdit } from "../store.js";
+    let fullName = "";
+    let password = "";
+    let login = "";
+    let isAdmin = false;
+    let id;
 
-    userToEdit.subscribe(value => {
-        console.log(value)
-        fullName = value.fullName 
-        password = value.password
-        login = value.login 
-        isAdmin = value.isAdmin
-        id = value.id
-    })
+    userToEdit.subscribe((value) => {
+        console.log(value);
+        fullName = value.fullName;
+        password = value.password;
+        login = value.login;
+        isAdmin = value.isAdmin;
+        id = value.id;
+    });
 
     const Edit = () => {
         const body = JSON.stringify({
-            fullName: document.getElementById('Fullname').value,
-            login: document.getElementById('Login').value,
-            password: document.getElementById('Password').value,
-            isAdmin: document.getElementById('isAdmin').checked,
-            id
+            fullName: document.getElementById("Fullname").value,
+            login: document.getElementById("Login").value,
+            password: document.getElementById("Password").value,
+            isAdmin: document.getElementById("isAdmin").checked,
+            id,
+        });
+        const headers = { "Content-Type": "application/json" };
+        fetch("http://localhost:3421/editUser", {
+            method: "post",
+            body,
+            headers,
         })
-         const headers = { "Content-Type": "application/json" };
-        fetch("http://localhost:3421/editUser" , {method: 'post' , body, headers}).
-        then(response => response.json()).
-        then(data => {
-            console.log(data)
-           window.location.href = "/#/Users"
-        })
-    }
-
-
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                window.location.href = "/#/Users";
+            });
+    };
 </script>
-
 
 <div class="form-container">
     <h1>Logowanie</h1>
-     <label for="fullName"
+    <label for="fullName"
         >Hasło
         <input
             type="text"
@@ -79,9 +80,8 @@
             name="isAdmin"
             id="isAdmin"
             checked={isAdmin == 1 ? true : false}
-            
+            style="margin-top:-25px;margin-bottom:30px"
         />
     </label>
     <button on:click={Edit}>Edytuj</button>
-    
 </div>
