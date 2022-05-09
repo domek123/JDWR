@@ -34,6 +34,8 @@
     userNameValue = value;
   });
 
+  settings.subscribe(val => console.log(val , "BYBYBYBBY"))
+
   onMount(() => {
     fetch('http://localhost:3421/getConfig').then(response => response.json()).then(data => {
       let obj = {}

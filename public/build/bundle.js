@@ -16392,12 +16392,12 @@ var app = (function () {
     			create_component(router.$$.fragment);
     			t4 = space();
     			create_component(footer.$$.fragment);
-    			add_location(header1, file, 48, 2, 1617);
-    			add_location(main, file, 53, 4, 1713);
+    			add_location(header1, file, 50, 2, 1680);
+    			add_location(main, file, 55, 4, 1776);
     			attr_dev(div0, "class", "main-container");
-    			add_location(div0, file, 52, 2, 1679);
+    			add_location(div0, file, 54, 2, 1742);
     			attr_dev(div1, "class", "flex flex-col page-container svelte-zr1en8");
-    			add_location(div1, file, 47, 0, 1571);
+    			add_location(div1, file, 49, 0, 1634);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -16472,6 +16472,8 @@ var app = (function () {
     		console.log(value);
     		$$invalidate(0, userNameValue = value);
     	});
+
+    	settings.subscribe(val => console.log(val, "BYBYBYBBY"));
 
     	onMount(() => {
     		fetch('http://localhost:3421/getConfig').then(response => response.json()).then(data => {

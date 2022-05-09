@@ -36,7 +36,8 @@ def editConfig():
     myConnection = sqlite3.connect('./modules/db.sqlite')
     myCursor = myConnection.cursor()
     for item in content['listOfSettings']:
-        myCursor.execute("UPDATE config SET configValue='" + item['value'] + "' WHERE configName='" + item['name'] +"'")
+        print(item['value'])
+        myCursor.execute("UPDATE config SET configValue='" + str(item['value']) + "' WHERE configName='" + item['name'] +"'")
         myConnection.commit()
     myConnection.close()
     return jsonify({"a": "b"})
