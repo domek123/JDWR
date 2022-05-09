@@ -1,29 +1,33 @@
 <script>
-    export let id
-    export let fullName 
-    export let login 
-    export let password
-    export let isAdmin
+    export let id;
+    export let fullName;
+    export let login;
+    export let password;
+    export let isAdmin;
 
-    import {userUpdated, userToEdit} from "../store.js"
+    import { userUpdated, userToEdit } from "../store.js";
 
     const EditUser = () => {
-        userToEdit.set({fullName,login,password,isAdmin,id})
-        window.location.href = "/#/EditUser"
-    }
+        userToEdit.set({ fullName, login, password, isAdmin, id });
+        window.location.href = "/#/EditUser";
+    };
 
     const removeUser = () => {
         const body = JSON.stringify({
-            id: id
+            id: id,
+        });
+        const headers = { "Content-Type": "application/json" };
+        fetch("http://localhost:3421/removeUser", {
+            method: "post",
+            body,
+            headers,
         })
-         const headers = { "Content-Type": "application/json" };
-        fetch("http://localhost:3421/removeUser" , {method: 'post' , body, headers}).
-        then(response => response.json()).
-        then(data => {
-            console.log(data)
-            userUpdated.set(data)
-        })
-    }
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                userUpdated.set(data);
+            });
+    };
 </script>
 
 <div class="user-elem">
@@ -37,7 +41,7 @@
 </div>
 
 <style>
-    .user-elem{
+    .user-elem {
         width: 80vw;
         height: 50px;
         background-color: azure;
@@ -50,16 +54,18 @@
         font-size: 1.5em;
         font-weight: 600;
     }
-    .user-elem > div{
+    .user-elem > div {
         width: 15%;
         text-align: center;
     }
-    .user-elem > div:nth-child(1),.user-elem > div:nth-child(2){
+    .user-elem > div:nth-child(1),
+    .user-elem > div:nth-child(2) {
         width: 7%;
     }
-    .editBtn, .removeBtn{
-      background-color: rgb(255, 64, 0);
-      border-radius: 6px;
+    .editBtn,
+    .removeBtn {
+        background-color: rgb(255, 64, 0);
+        border-radius: 6px;
+        cursor: pointer;
     }
-
 </style>
