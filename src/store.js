@@ -31,4 +31,5 @@ export const settings = writable({
   sliderHeaderColor: "#FFFFFF",
   sliderContentColor: "#FFFFFF",
   SliderDuration: "2000",
+  navFooterColor: "#111827",
 });

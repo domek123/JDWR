@@ -159,12 +159,17 @@
             <div class="about-in">Slider Duration</div>
             <input type="text" bind:value={setting.SliderDuration} />
         </div>
+         <div class="form-item">
+            <div class="about-in">Nav/footer Color</div>
+            <input type="color" bind:value={setting.navFooterColor} />
+        </div>
     </div>
     <div class="export-options">
         <button on:click={setSettings}>SET</button>
         <button on:click={exportData}>EXPORT</button>
         <input type="file" bind:files={importFile} on:change={importData} />
     </div>
+    
 </div>
 
 <style>

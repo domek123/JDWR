@@ -7,8 +7,8 @@ myConnection = sqlite3.connect('db.sqlite')
 myCursor = myConnection.cursor()
 
 myCursor.execute("""INSERT INTO config  VALUES(
-                'sliderContentColor',
-                '#FFFFFF'
+                'navFooterColor',
+                '#111827'
                 )""")
 
 myConnection.commit()

@@ -1,4 +1,7 @@
 <script>
+  import {settings} from '../store.js'
+  let setting = {}
+  settings.subscribe(value => setting = value)
   let linkArray = [
     {
       href: "https://www.facebook.com/",
@@ -39,9 +42,9 @@
   ];
 </script>
 
-<footer class="text-center bg-gray-900 text-white">
+<footer class="text-center a text-white" style="--bg-footer: {setting.navFooterColor}">
   <div class=" px-6">
-    <div class="footer-main">
+    <div class="footer-main"  >
       {#each linkArray as image}
         {#if image.visible == true}
           <a
@@ -74,8 +77,12 @@
 </footer>
 
 <style>
+  .a{
+     background-color: var(--bg-footer);
+  }
   .footer-main {
     display: flex;
+  
     padding: 10px;
     justify-content: center;
     align-items: center;

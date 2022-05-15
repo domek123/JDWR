@@ -1,4 +1,4 @@
-from flask import Flask, request, session , redirect, jsonify
+from flask import Flask, request, session , redirect, jsonify, send_from_directory
 from flask_cors import CORS, cross_origin
 import sqlite3
 import os
@@ -17,6 +17,14 @@ app.config['CORS_HEADERS'] = "Content-Type"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_FOLDER_GALLERY'] = UPLOAD_FOLDER_GALLERY
 app.config['UPLOAD_FOLDER_SLIDER'] = UPLOAD_FOLDER_SLIDER
+
+@app.route("/")
+def index():
+    return send_from_directory('../public' , 'index.html')
+
+@app.route("/<path:path>")
+def home(path):
+    return send_from_directory('../public', path)
 
 
 @app.route('/getConfig' , methods=['GET'])

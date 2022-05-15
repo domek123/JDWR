@@ -1,5 +1,5 @@
 <script>
-    import { userName, userLogged } from "../store.js";
+    import { userName, userLogged, settings } from "../store.js";
 
     let userNameValue = "";
     let userLoggedValue;
@@ -11,13 +11,15 @@
         userName.set("");
         userLogged.set({});
     };
+    let setting = {}
+    settings.subscribe(value => {setting = value})
 
     const handleShowUsers = () => {
         window.location.href = "/#/Users";
     };
 </script>
 
-<div class="header-container bg-gray-900">
+<div class="header-container" style="--bg-nav: {setting.navFooterColor}">
     <div class="page-links">
         <a href="/#">Home</a>
         <a href="#/gallery">Galeria</a>
@@ -44,7 +46,7 @@
         z-index: 10;
         top: 0;
         width: 100%;
-
+        background-color: var(--bg-nav);
         display: flex;
         justify-content: space-between;
         align-items: center;

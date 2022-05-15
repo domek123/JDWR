@@ -16,13 +16,61 @@
         console.log(val);
     });
 
+    let sortName = "alfabetycznie"
+    let lengthOf = null
+
     let ArticlesArray = [];
     let commentsArray = [];
+
+    let writeWord = ""
+
+    let basicArray = []
+
+    const findWords = () => {
+       
+
+        let helperArray = []
+
+        console.log(writeWord)
+
+
+        if(writeWord == "" || lengthOf != ArticlesArray.length){
+            ArticlesArray = [...basicArray]
+        }
+
+
+            ArticlesArray.forEach(item => {
+            if(item.content.includes(writeWord)){
+                helperArray.push(item)
+            }
+        })
+        
+
+        
+        
+        
+        console.log(ArticlesArray)
+        ArticlesArray = [...helperArray]
+    }
+
+    const sorting = () => {
+        if(sortName == "alfabetycznie"){
+            ArticlesArray.sort((a,b) => (a.header > b.header) ? 1 : ((b.header > a.header) ? -1 : 0))
+        }else{
+            ArticlesArray = []
+            commentsArray = []
+            getArticles()
+        }
+       
+        console.log(ArticlesArray)
+        ArticlesArray = ArticlesArray
+    }
 
     const getArticles = () => {
         fetch("http://localhost:3421/getArticles")
             .then((response) => response.json())
             .then((data) => {
+                lengthOf = data.length
                 data.records.forEach((item) => {
                     ArticlesArray.push({
                         ArticleID: item[0],
@@ -30,6 +78,7 @@
                         content: item[2],
                         photoName: "./news_img/" + item[3],
                     });
+                basicArray = [...ArticlesArray]
                 });
                 ArticlesArray = ArticlesArray;
                 articleList.set(ArticlesArray);
@@ -52,11 +101,21 @@
     onMount(() => getArticles());
 </script>
 
+<button on:click={sorting}>Sortuj</button>
+<select name="" id="" bind:value={sortName} >
+    <option value="alfabetycznie">alfabetycznie</option>
+    <option value="data">wg daty</option>
+</select>
+<input type="text"  bind:value={writeWord}>
+<button on:click={findWords}>FIND</button>
+
+
 <div class="articles-container">
     {#each ArticlesArray as Article}
         <ArticleSmall info={Article} />
     {/each}
 </div>
+
 
 {#if isUserAdmin == 1}<a href="/#/AddArticle" class="add">Dodaj artykuł</a>{/if}
 
