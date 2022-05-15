@@ -19,7 +19,7 @@
       style="--headersColor: {setting.headersColor};
     --headersFSize: {setting.headersFSize}; --headerDecoration: {setting.headerDecoration}"
     >
-      Slider
+      {setting.sliderName}
     </h1>
   </div>
   <Slider />

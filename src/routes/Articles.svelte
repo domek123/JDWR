@@ -16,70 +16,89 @@
         console.log(val);
     });
 
-    let sortName = "alfabetycznie"
-    let lengthOf = null
+    let sortName = "alfabetycznie";
+    let lengthOf = null;
 
     let ArticlesArray = [];
     let commentsArray = [];
 
-    let writeWord = ""
+    let writeWord = "";
 
-    let basicArray = []
+    let basicArray = [];
+    let categoryArray = ["wszystkie"];
 
     const findWords = () => {
-       
+        let helperArray = [];
 
-        let helperArray = []
+        console.log(writeWord);
 
-        console.log(writeWord)
-
-
-        if(writeWord == "" || lengthOf != ArticlesArray.length){
-            ArticlesArray = [...basicArray]
+        if (writeWord == "" || lengthOf != ArticlesArray.length) {
+            ArticlesArray = [...basicArray];
         }
 
-
-            ArticlesArray.forEach(item => {
-            if(item.content.includes(writeWord)){
-                helperArray.push(item)
+        ArticlesArray.forEach((item) => {
+            if (item.content.includes(writeWord)) {
+                helperArray.push(item);
             }
-        })
-        
+        });
 
-        
-        
-        
-        console.log(ArticlesArray)
-        ArticlesArray = [...helperArray]
-    }
+        console.log(ArticlesArray);
+        ArticlesArray = [...helperArray];
+    };
 
     const sorting = () => {
-        if(sortName == "alfabetycznie"){
-            ArticlesArray.sort((a,b) => (a.header > b.header) ? 1 : ((b.header > a.header) ? -1 : 0))
-        }else{
-            ArticlesArray = []
-            commentsArray = []
-            getArticles()
+        if (sortName == "alfabetycznie") {
+            ArticlesArray.sort((a, b) =>
+                a.header > b.header ? 1 : b.header > a.header ? -1 : 0
+            );
+        } else {
+            ArticlesArray = [];
+            commentsArray = [];
+            getArticles();
         }
-       
-        console.log(ArticlesArray)
-        ArticlesArray = ArticlesArray
-    }
+
+        console.log(ArticlesArray);
+        ArticlesArray = ArticlesArray;
+    };
+    let category = "wszystkie";
+
+    const changeCategory = () => {
+        if (category == "wszystkie") {
+            ArticlesArray = [...basicArray];
+        } else {
+            ArticlesArray = [...basicArray];
+            let helperArray = [];
+            ArticlesArray.forEach((item) => {
+                if (item.category == category) {
+                    helperArray.push(item);
+                }
+            });
+            ArticlesArray = [...helperArray];
+        }
+    };
 
     const getArticles = () => {
         fetch("http://localhost:3421/getArticles")
             .then((response) => response.json())
             .then((data) => {
-                lengthOf = data.length
+                categoryArray = [];
+                lengthOf = data.length;
                 data.records.forEach((item) => {
                     ArticlesArray.push({
                         ArticleID: item[0],
                         header: item[1],
                         content: item[2],
                         photoName: "./news_img/" + item[3],
+                        category: item[5],
                     });
-                basicArray = [...ArticlesArray]
+                    if (!categoryArray.includes(item[5])) {
+                        categoryArray.push(item[5]);
+                    }
+                    categoryArray = categoryArray;
+                    basicArray = [...ArticlesArray];
                 });
+                categoryArray.push("wszystkie");
+                categoryArray = categoryArray;
                 ArticlesArray = ArticlesArray;
                 articleList.set(ArticlesArray);
                 fetch("http://localhost:3421/getComments")
@@ -101,14 +120,26 @@
     onMount(() => getArticles());
 </script>
 
-<button on:click={sorting}>Sortuj</button>
-<select name="" id="" bind:value={sortName} >
-    <option value="alfabetycznie">alfabetycznie</option>
-    <option value="data">wg daty</option>
-</select>
-<input type="text"  bind:value={writeWord}>
-<button on:click={findWords}>FIND</button>
-
+<div class="article-sett">
+    <div>
+        <select name="" id="" bind:value={sortName}>
+            <option value="alfabetycznie">alfabetycznie</option>
+            <option value="data">wg daty</option>
+        </select>
+        <button on:click={sorting}>Sortuj</button>
+    </div>
+    <div>
+        <input type="text" bind:value={writeWord} />
+        <button on:click={findWords}>FIND</button>
+    </div>
+    <div>
+        <select name="" id="" bind:value={category} on:change={changeCategory}>
+            {#each categoryArray as cat}
+                <option value={cat}>{cat}</option>
+            {/each}
+        </select>
+    </div>
+</div>
 
 <div class="articles-container">
     {#each ArticlesArray as Article}
@@ -116,10 +147,27 @@
     {/each}
 </div>
 
-
 {#if isUserAdmin == 1}<a href="/#/AddArticle" class="add">Dodaj artykuł</a>{/if}
 
 <style>
+    .article-sett {
+        display: flex;
+        justify-content: space-evenly;
+
+        border: 1px solid gray;
+        border-radius: 15px;
+        margin: 15px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .article-sett > div > button {
+        color: white;
+        width: 100px;
+    }
+    .article-sett > div > select,
+    .article-sett > div > input {
+        width: 200px;
+    }
     .articles-container {
         display: flex;
         flex-direction: row;

@@ -163,6 +163,18 @@
             <div class="about-in">Nav/footer Color</div>
             <input type="color" bind:value={setting.navFooterColor} />
         </div>
+         <div class="form-item">
+            <div class="about-in">First SectionName</div>
+            <input type="text" bind:value={setting.sliderName} />
+        </div>
+         <div class="form-item">
+            <div class="about-in">Second SectionName</div>
+            <input type="text" bind:value={setting.newsName} />
+        </div>
+         <div class="form-item">
+            <div class="about-in">Third Section Name</div>
+            <input type="text" bind:value={setting.sectionName} />
+        </div>
     </div>
     <div class="export-options">
         <button on:click={setSettings}>SET</button>

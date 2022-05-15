@@ -167,6 +167,10 @@ def addArticle():
        'photoName': content['photoName']
    })
    myConnection.commit()
+   myCursor.execute("INSERT INTO Articles VALUES(:ArticleID , :Category)", {
+       'ArticleID' : content['ArticleID'],
+       'Category' : content['Category']
+   })
    myCursor.execute("SELECT * FROM Articles")
    print(myCursor.fetchall())
    myConnection.close()
@@ -181,7 +185,7 @@ def getArticle():
     records = []
     myConnection = sqlite3.connect('./modules/db.sqlite')
     myCursor = myConnection.cursor()
-    myCursor.execute("SELECT * FROM Articles")
+    myCursor.execute("SELECT * FROM Articles, CategoryArt WHERE CategoryArt.ArticleID=Articles.ArticleID")
     records = myCursor.fetchall()
     records.reverse()
 

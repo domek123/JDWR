@@ -99,7 +99,7 @@
         width: 40%;
     }
     .cms-links {
-        width: 20%;
+        width: 40%;
     }
     .page-links a,
     .cms-links a {
