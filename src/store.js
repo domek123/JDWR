@@ -32,4 +32,7 @@ export const settings = writable({
   sliderContentColor: "#FFFFFF",
   SliderDuration: "2000",
   navFooterColor: "#111827",
+  sliderName: "Slider",
+  newsName: "News",
+  sectionName: "Section",
 });

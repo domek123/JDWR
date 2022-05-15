@@ -25,7 +25,7 @@
  
  <section class="news">
     <h1 class="news-head " style="--headersColor: {setting.headersColor};
-    --headersFSize: {setting.headersFSize}; --headerDecoration: {setting.headerDecoration}">News</h1>
+    --headersFSize: {setting.headersFSize}; --headerDecoration: {setting.headerDecoration}">{setting.newsName}</h1>
     <div class="news-content">
       {#each newsArray as news}
         <ArticleSmall info={news} />

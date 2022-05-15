@@ -8,7 +8,7 @@
  
  <section class="main-section">
     <h1 class="news-head " style="--headersColor: {setting.headersColor};
-    --headersFSize: {setting.headersFSize}; --headerDecoration: {setting.headerDecoration}">Section</h1>
+    --headersFSize: {setting.headersFSize}; --headerDecoration: {setting.headerDecoration}">{setting.sectionName}</h1>
     <article class="main-article">
       <div class=" p-6 main-info" style="--sectionColor: {setting.sectionColor};--sectionFSize: {setting.sectionFSize}">
         Lorem Ipsum is simply dummy text of the printing and typesetting

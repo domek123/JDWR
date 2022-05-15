@@ -25,6 +25,7 @@
     let writeWord = ""
 
     let basicArray = []
+    let categoryArray = ["wszystkie"]
 
     const findWords = () => {
        
@@ -65,11 +66,28 @@
         console.log(ArticlesArray)
         ArticlesArray = ArticlesArray
     }
+    let category = "wszystkie"
+
+    const changeCategory = () => {
+        if(category == "wszystkie"){
+            ArticlesArray = [...basicArray]
+        }else{
+            ArticlesArray = [...basicArray]
+            let helperArray = []
+            ArticlesArray.forEach(item => {
+                if(item.category == category){
+                    helperArray.push(item)
+                }
+            })
+            ArticlesArray = [...helperArray]
+        }
+    }
 
     const getArticles = () => {
         fetch("http://localhost:3421/getArticles")
             .then((response) => response.json())
             .then((data) => {
+                categoryArray = []
                 lengthOf = data.length
                 data.records.forEach((item) => {
                     ArticlesArray.push({
@@ -77,9 +95,16 @@
                         header: item[1],
                         content: item[2],
                         photoName: "./news_img/" + item[3],
+                        category: item[5]
                     });
+                if(!categoryArray.includes(item[5])){
+                    categoryArray.push(item[5])
+                }
+                categoryArray = categoryArray
                 basicArray = [...ArticlesArray]
                 });
+                categoryArray.push('wszystkie')
+                categoryArray = categoryArray
                 ArticlesArray = ArticlesArray;
                 articleList.set(ArticlesArray);
                 fetch("http://localhost:3421/getComments")
@@ -108,6 +133,12 @@
 </select>
 <input type="text"  bind:value={writeWord}>
 <button on:click={findWords}>FIND</button>
+
+<select name="" id="" bind:value={category} on:change={changeCategory}>
+    {#each categoryArray as cat}
+        <option value={cat}>{cat}</option>
+    {/each}
+</select>
 
 
 <div class="articles-container">
