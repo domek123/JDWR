@@ -54,7 +54,7 @@
     <label for="password"
         >Hasło
         <input
-            type="text"
+            type="password"
             name="password"
             id="Password"
             autocomplete="off"

@@ -84,6 +84,7 @@
     height: 100%;
   }
   #user-name {
+    z-index: 20;
     font-size: 23px;
     color: white;
     display: flex;

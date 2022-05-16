@@ -3169,7 +3169,7 @@ var app = (function () {
     			create_component(dot.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "sc-carousel-dots__dot-container svelte-199r4fg");
-    			add_location(div, file$r, 23, 4, 521);
+    			add_location(div, file$r, 23, 4, 515);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -3235,7 +3235,7 @@ var app = (function () {
     			}
 
     			attr_dev(div, "class", "sc-carousel-dots__container svelte-199r4fg");
-    			add_location(div, file$r, 21, 0, 417);
+    			add_location(div, file$r, 21, 0, 411);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3303,7 +3303,7 @@ var app = (function () {
     	let { currentPageIndex = 0 } = $$props;
 
     	function handleDotClick(pageIndex) {
-    		dispatch("pageChange", pageIndex);
+    		dispatch('pageChange', pageIndex);
     	}
 
     	const writable_props = ['pagesCount', 'currentPageIndex'];
@@ -3389,10 +3389,10 @@ var app = (function () {
     			attr_dev(i, "class", "sc-carousel-arrow__arrow svelte-1txy3xr");
     			toggle_class(i, "sc-carousel-arrow__arrow-next", /*direction*/ ctx[0] === NEXT);
     			toggle_class(i, "sc-carousel-arrow__arrow-prev", /*direction*/ ctx[0] === PREV);
-    			add_location(i, file$q, 19, 2, 374);
+    			add_location(i, file$q, 19, 2, 371);
     			attr_dev(div, "class", "sc-carousel-arrow__circle svelte-1txy3xr");
     			toggle_class(div, "sc-carousel-arrow__circle_disabled", /*disabled*/ ctx[1]);
-    			add_location(div, file$q, 14, 0, 259);
+    			add_location(div, file$q, 14, 0, 256);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9213,7 +9213,7 @@ var app = (function () {
     	loaded: /*loaded*/ ctx[5]
     });
 
-    // (246:4) {#if arrows}
+    // (255:4) {#if arrows}
     function create_if_block_3(ctx) {
     	let current;
     	const prev_slot_template = /*#slots*/ ctx[37].prev;
@@ -9269,14 +9269,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(246:4) {#if arrows}",
+    		source: "(255:4) {#if arrows}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (247:60)           
+    // (256:60)           
     function fallback_block_2(ctx) {
     	let div;
     	let arrow;
@@ -9296,8 +9296,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(arrow.$$.fragment);
-    			attr_dev(div, "class", "sc-carousel__arrow-container left svelte-e3lu8m");
-    			add_location(div, file$o, 247, 8, 6338);
+    			attr_dev(div, "class", "sc-carousel__arrow-container svelte-5p05kc");
+    			add_location(div, file$o, 256, 8, 6291);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9328,14 +9328,14 @@ var app = (function () {
     		block,
     		id: fallback_block_2.name,
     		type: "fallback",
-    		source: "(247:60)           ",
+    		source: "(256:60)           ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (282:6) {#if autoplayProgressVisible}
+    // (293:6) {#if autoplayProgressVisible}
     function create_if_block_2(ctx) {
     	let div;
     	let progress;
@@ -9350,8 +9350,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(progress.$$.fragment);
-    			attr_dev(div, "class", "sc-carousel-progress__container svelte-e3lu8m");
-    			add_location(div, file$o, 282, 8, 7464);
+    			attr_dev(div, "class", "sc-carousel-progress__container svelte-5p05kc");
+    			add_location(div, file$o, 293, 8, 7421);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9382,14 +9382,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(282:6) {#if autoplayProgressVisible}",
+    		source: "(293:6) {#if autoplayProgressVisible}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (288:4) {#if arrows}
+    // (299:4) {#if arrows}
     function create_if_block_1(ctx) {
     	let current;
     	const next_slot_template = /*#slots*/ ctx[37].next;
@@ -9445,14 +9445,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(288:4) {#if arrows}",
+    		source: "(299:4) {#if arrows}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (289:60)           
+    // (300:60)           
     function fallback_block_1(ctx) {
     	let div;
     	let arrow;
@@ -9472,8 +9472,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(arrow.$$.fragment);
-    			attr_dev(div, "class", "sc-carousel__arrow-container right svelte-e3lu8m");
-    			add_location(div, file$o, 289, 8, 7686);
+    			attr_dev(div, "class", "sc-carousel__arrow-container svelte-5p05kc");
+    			add_location(div, file$o, 300, 8, 7643);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9504,14 +9504,14 @@ var app = (function () {
     		block,
     		id: fallback_block_1.name,
     		type: "fallback",
-    		source: "(289:60)           ",
+    		source: "(300:60)           ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (300:2) {#if dots}
+    // (311:2) {#if dots}
     function create_if_block$5(ctx) {
     	let current;
     	const dots_slot_template = /*#slots*/ ctx[37].dots;
@@ -9567,14 +9567,14 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(300:2) {#if dots}",
+    		source: "(311:2) {#if dots}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (306:5)         
+    // (317:5)         
     function fallback_block(ctx) {
     	let dots_1;
     	let current;
@@ -9621,7 +9621,7 @@ var app = (function () {
     		block,
     		id: fallback_block.name,
     		type: "fallback",
-    		source: "(306:5)         ",
+    		source: "(317:5)         ",
     		ctx
     	});
 
@@ -9663,17 +9663,17 @@ var app = (function () {
     			if (if_block2) if_block2.c();
     			t3 = space();
     			if (if_block3) if_block3.c();
-    			attr_dev(div0, "class", "sc-carousel__pages-container svelte-e3lu8m");
+    			attr_dev(div0, "class", "sc-carousel__pages-container svelte-5p05kc");
     			set_style(div0, "transform", "translateX(" + /*offset*/ ctx[8] + "px)");
     			set_style(div0, "transition-duration", /*durationMs*/ ctx[9] + "ms");
     			set_style(div0, "transition-timing-function", /*timingFunction*/ ctx[0]);
-    			add_location(div0, file$o, 264, 6, 6796);
-    			attr_dev(div1, "class", "sc-carousel__pages-window svelte-e3lu8m");
-    			add_location(div1, file$o, 256, 4, 6592);
-    			attr_dev(div2, "class", "sc-carousel__content-container svelte-e3lu8m");
-    			add_location(div2, file$o, 244, 2, 6204);
-    			attr_dev(div3, "class", "sc-carousel__carousel-container svelte-e3lu8m");
-    			add_location(div3, file$o, 243, 0, 6155);
+    			add_location(div0, file$o, 275, 6, 6748);
+    			attr_dev(div1, "class", "sc-carousel__pages-window svelte-5p05kc");
+    			add_location(div1, file$o, 265, 4, 6540);
+    			attr_dev(div2, "class", "sc-carousel__content-container svelte-5p05kc");
+    			add_location(div2, file$o, 253, 2, 6157);
+    			attr_dev(div3, "class", "sc-carousel__carousel-container svelte-5p05kc");
+    			add_location(div3, file$o, 252, 0, 6108);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9897,17 +9897,17 @@ var app = (function () {
 
     	const [{ data, progressManager }, methods, service] = createCarousel((key, value) => {
     		switcher({
-    			currentPageIndex: () => $$invalidate(6, currentPageIndex = value),
-    			progressValue: () => $$invalidate(7, progressValue = value),
-    			offset: () => $$invalidate(8, offset = value),
-    			durationMs: () => $$invalidate(9, durationMs = value),
-    			pagesCount: () => $$invalidate(10, pagesCount = value),
-    			loaded: () => $$invalidate(5, loaded = value)
+    			'currentPageIndex': () => $$invalidate(6, currentPageIndex = value),
+    			'progressValue': () => $$invalidate(7, progressValue = value),
+    			'offset': () => $$invalidate(8, offset = value),
+    			'durationMs': () => $$invalidate(9, durationMs = value),
+    			'pagesCount': () => $$invalidate(10, pagesCount = value),
+    			'loaded': () => $$invalidate(5, loaded = value)
     		})(key);
     	});
 
     	const dispatch = createEventDispatcher();
-    	let { timingFunction = "ease-in-out" } = $$props;
+    	let { timingFunction = 'ease-in-out' } = $$props;
     	let { arrows = true } = $$props;
     	let { infinite = true } = $$props;
     	let { initialPageIndex = 0 } = $$props;
@@ -9923,22 +9923,22 @@ var app = (function () {
     	let { particlesToScroll = 1 } = $$props;
 
     	async function goTo(pageIndex, options) {
-    		const animated = get$1(options, "animated", true);
+    		const animated = get$1(options, 'animated', true);
 
-    		if (typeof pageIndex !== "number") {
-    			throw new Error("pageIndex should be a number");
+    		if (typeof pageIndex !== 'number') {
+    			throw new Error('pageIndex should be a number');
     		}
 
     		await methods.showPage(pageIndex, { animated });
     	}
 
     	async function goToPrev(options) {
-    		const animated = get$1(options, "animated", true);
+    		const animated = get$1(options, 'animated', true);
     		await methods.showPrevPage({ animated });
     	}
 
     	async function goToNext(options) {
-    		const animated = get$1(options, "animated", true);
+    		const animated = get$1(options, 'animated', true);
     		await methods.showNextPage({ animated });
     	}
 
@@ -12633,7 +12633,7 @@ var app = (function () {
     			add_location(input1, file$e, 45, 8, 1415);
     			attr_dev(label1, "for", "login");
     			add_location(label1, file$e, 43, 4, 1371);
-    			attr_dev(input2, "type", "text");
+    			attr_dev(input2, "type", "password");
     			attr_dev(input2, "name", "password");
     			attr_dev(input2, "id", "Password");
     			attr_dev(input2, "autocomplete", "off");
@@ -12641,8 +12641,8 @@ var app = (function () {
     			add_location(input2, file$e, 55, 8, 1651);
     			attr_dev(label2, "for", "password");
     			add_location(label2, file$e, 53, 4, 1604);
-    			add_location(button, file$e, 63, 4, 1847);
-    			add_location(p, file$e, 64, 4, 1905);
+    			add_location(button, file$e, 63, 4, 1851);
+    			add_location(p, file$e, 64, 4, 1909);
     			attr_dev(div, "class", "form-container");
     			add_location(div, file$e, 31, 0, 1070);
     		},
@@ -12807,7 +12807,7 @@ var app = (function () {
     			add_location(input0, file$d, 37, 8, 1292);
     			attr_dev(label0, "for", "login");
     			add_location(label0, file$d, 35, 4, 1248);
-    			attr_dev(input1, "type", "text");
+    			attr_dev(input1, "type", "password");
     			attr_dev(input1, "name", "password");
     			attr_dev(input1, "id", "Password");
     			attr_dev(input1, "autocomplete", "off");
@@ -12816,8 +12816,8 @@ var app = (function () {
     			attr_dev(label1, "for", "password");
     			add_location(label1, file$d, 45, 4, 1481);
     			attr_dev(button, "class", "svelte-socjh2");
-    			add_location(button, file$d, 55, 4, 1724);
-    			add_location(p, file$d, 56, 4, 1778);
+    			add_location(button, file$d, 55, 4, 1728);
+    			add_location(p, file$d, 56, 4, 1782);
     			attr_dev(div, "class", "form-container svelte-socjh2");
     			add_location(div, file$d, 32, 0, 1188);
     		},
@@ -17101,13 +17101,13 @@ var app = (function () {
     			t4 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "id", "user-name");
-    			attr_dev(div0, "class", "svelte-twcw68");
+    			attr_dev(div0, "class", "svelte-5jz3bi");
     			add_location(div0, file, 52, 4, 1695);
     			add_location(header1, file, 51, 2, 1681);
     			add_location(main, file, 56, 4, 1803);
     			attr_dev(div1, "class", "main-container");
     			add_location(div1, file, 55, 2, 1769);
-    			attr_dev(div2, "class", "flex flex-col page-container svelte-twcw68");
+    			attr_dev(div2, "class", "flex flex-col page-container svelte-5jz3bi");
     			add_location(div2, file, 50, 0, 1635);
     		},
     		l: function claim(nodes) {
