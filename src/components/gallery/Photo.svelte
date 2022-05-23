@@ -1,13 +1,16 @@
 <script>
     export let photoInfo;
+
+    
 </script>
 
-<div class="lg:w-1/3 sm:w-1/2 p-4 mb-10 ">
-    <div class="flex relative image-container">
+<div class="p-4 mb-10 alls">
+    <div class="flex relative image-container" >
         <img
             alt="gallery"
             class="absolute inset-0 w-full h-full object-cover object-center"
             src={photoInfo.src}
+            
         />
         <div
             class="px-8 py-10 relative z-10 w-full border-4 bg-gray-200 opacity-0 hover:opacity-90"
@@ -23,7 +26,14 @@
 </div>
 
 <style>
+
+
+.alls{
+        width: 33%;
+        height: 300px;
+    }
     .image-container {
+        width: 100%;
         height: 300px;
         border: 2px solid gray;
     }
