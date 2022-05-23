@@ -6,6 +6,7 @@ export const userUpdated = writable({});
 export const userToEdit = writable({});
 export const articleList = writable([]);
 export const commentsList = writable([]);
+export const LinkList = writable([])
 export const SliderInfo = writable([]);
 export const settings = writable({
   articleHeaderFSize: "30px",

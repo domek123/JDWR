@@ -319,6 +319,16 @@ def getSlider():
     records = {'records': myCursor.fetchall(), 'duration' : duration}
     return jsonify(records)
 
+@app.route('/deleteSlide' , methods=['POST'])
+@cross_origin()
+def deleteSlide():
+    content = request.json
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("DELETE FROM Slider WHERE content='"+ content['content'] + "' and mainHeder='" + content['header'] + "'")
+    myConnection.commit()
+    return jsonify({'info' : content})
+
 
 @app.route('/getNews' , methods=['POST'])
 @cross_origin()
@@ -333,6 +343,32 @@ def getNews():
     myConnection.close()
 
     return jsonify({'records' :records})
+
+@app.route('/addLink' , methods=['POST'])
+@cross_origin()
+def addLink():
+    content = request.json
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("INSERT INTO Nav VALUES(:FullName , :url)", {
+        'FullName': content['FullName'],
+        'url': content['url'],
+
+
+    })
+    myConnection.commit()
+    myConnection.close()
+    return jsonify({'info' : content})
+
+@app.route('/getLinks' , methods=['GET'])
+@cross_origin()
+def getLinks():
+    myConnection = sqlite3.connect('./modules/db.sqlite')
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT * FROM Nav")
+    records = myCursor.fetchall()
+    myConnection.close()
+    return jsonify({'records' : records})
 
 
 

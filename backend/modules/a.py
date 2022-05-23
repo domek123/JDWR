@@ -11,12 +11,8 @@ myCursor = myConnection.cursor()
 #               'Section'
 #                )""")
 
-myCursor.execute("""INSERT INTO CategoryArt  VALUES(
-                    '165173912264979892',
-                    'kosmos'
-                    )""")
 
-
+myCursor.execute("DELETE FROM Nav WHERE FullName='k'")
 
 myConnection.commit()
 

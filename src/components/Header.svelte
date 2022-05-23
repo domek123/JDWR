@@ -1,5 +1,20 @@
 <script>
-    import { userName, userLogged, settings } from "../store.js";
+    import { userName, userLogged, settings , LinkList} from "../store.js";
+    import {onMount} from 'svelte'
+
+    let Links = []
+    LinkList.subscribe(value => {Links = value; console.log('bbbbbbbbbbbbbbbbb')})
+
+    onMount(() => {
+        fetch('http://localhost:3421/getLinks').then(response => response.json()).then(data => {
+            Links = []
+            data.records.forEach(item => {
+                Links.push({FullName: item[0] , url: item[1]})
+            })
+            Links = Links
+            LinkList.set(Links)
+        })
+    })
 
     let userNameValue = "";
     let userLoggedValue;
@@ -31,6 +46,12 @@
             <a href="/#">Home</a>
             <a href="#/gallery">Galeria</a>
             <a href="/#/Articles">Artykuły</a>
+            {#each Links as link}
+                <a href="/#/{link.url}" >{link.FullName}</a>
+            {/each}
+            {#if userLoggedValue.isAdmin == 1}
+                <button class="btn" on:click={()=> {window.location.href ="/#/addLink"}}>add</button>
+            {/if}
         </div>
 
         <div class="cms-links">
@@ -55,6 +76,12 @@
                 <a href="/#">Home</a>
                 <a href="#/gallery">Galeria</a>
                 <a href="/#/Articles">Artykuły</a>
+                {#each Links as link}
+                <a href="/#/{link.url}" >{link.FullName}</a>
+            {/each}
+                {#if userLoggedValue.isAdmin == 1}
+                <button class="btn" on:click={()=> {window.location.href ="/#/addLink"}}>add</button>
+            {/if}
             </div>
 
             <div class="links">

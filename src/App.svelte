@@ -19,6 +19,8 @@
   import ArticleFile from "./routes/ArticleFile.svelte";
   import EditSlider from "./routes/EditSlider.svelte";
   import SettingsHome from "./routes/SettingsHome.svelte";
+  import Info from "./components/Info.svelte"
+  import addLink from "./components/addLink.svelte"
 
   let userNameValue;
   let userLoggedValue;
@@ -70,6 +72,8 @@
           "/Article/:bound": ArticleFile,
           "/editSlider": EditSlider,
           "/settings": SettingsHome,
+          "/info": Info,
+          "/addLink":addLink,
           "*": NotFound,
         }}
       />

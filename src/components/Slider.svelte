@@ -1,17 +1,32 @@
 <script>
   import Carousel from "svelte-carousel";
   import {onMount} from 'svelte'
-  import {settings} from '../store.js'
+  import {settings, userLogged} from '../store.js'
   let colors = ["./slider/a.jpg", "./slider/galaxy.jpg"];
   let itemsSlider = [{photoName:'./slider/galaxy.jpg'},{photoName:'./slider/galaxy.jpg'},{photoName:'./slider/galaxy.jpg'}]
   let duration = 5000
   let isLoaded = false
 
   let setting = {}
+  let user = 0
   settings.subscribe(value => {setting = value; duration = value.SliderDuration})
+  userLogged.subscribe(value => {user = value.isAdmin})
   
   onMount(() => {
-     fetch('http://localhost:3421/getSlider').then(response => response.json()).then(data => {
+     getSlider()
+  })
+
+  const removeSlide = (header , content) => {
+    const headers = { "Content-Type": "application/json" };
+    const body = JSON.stringify({content, header })
+    fetch('http://localhost:3421/deleteSlide' , {method:'post' , body , headers}).then(response => response.json()).then(data => {
+      window.location.href = "/#/info"
+      //window.location.href = "/#/"
+    })
+  }
+
+  const getSlider = () => {
+    fetch('http://localhost:3421/getSlider').then(response => response.json()).then(data => {
       duration = parseInt(data.duration[1]);
       console.log(data.duration)
       itemsSlider = []
@@ -20,7 +35,7 @@
       console.log(itemsSlider)
       isLoaded = true
     })
-  })
+  }
 
   
 
@@ -37,6 +52,9 @@
      
      <div class="header-car" style="--sliderHeaderFSize: {setting.sliderHeaderFSize}; --sliderHeaderColor: {setting.sliderHeaderColor}">{item.header}</div>
      <div class="content-car" style="--sliderContentFSize: {setting.sliderContentFSize};--sliderContentColor: {setting.sliderContentColor}">{item.content}</div>
+     {#if user==1}
+        <button on:click={() => removeSlide(item.header,item.content)}>Usuń slajd</button>
+     {/if}
    </div>
     
 
